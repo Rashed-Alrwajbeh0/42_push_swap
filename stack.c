@@ -10,16 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
-#include "ft_printf.h"
+#include "push_swap.h"
 
 t_stack	*init_stack(void)
 {
-	t_stack *stack = malloc(sizeof(t_stack));
+	t_stack	*stack;
+
+	stack = malloc(sizeof(t_stack));
 	stack->top = NULL;
 	stack->bottom = NULL;
 	stack->size = 0;
-	return stack;
+	return (stack);
 }
 
 void	push(t_stack *stack, int elem)
@@ -89,7 +90,7 @@ void	visualize(t_stack *stack)
 
 t_counter	*init_counter(void)
 {
-	t_counter *counter;
+	t_counter	*counter;
 
 	counter = malloc(sizeof(t_counter));
 	counter->sa = 0;
@@ -104,20 +105,4 @@ t_counter	*init_counter(void)
 	counter->rrb = 0;
 	counter->rrr = 0;
 	return (counter);
-}
-int main(void)
-{
-	t_stack *stack = init_stack();
-	t_counter *counter = init_counter();
-	push(stack, 1);
-	push(stack, 2);
-	push(stack, 3);
-	pop(stack);
-	push(stack, 4);
-	visualize(stack);
-	pop(stack);
-	pop(stack);
-	ft_printf("stack's head : %d  stack's bottom : %d\n", stack->top->content, stack->bottom->content);
-	visualize(stack);
-	return (0);
 }

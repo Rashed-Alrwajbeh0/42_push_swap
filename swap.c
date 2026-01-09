@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap.h"
 
 void	sa(t_stack *stack_a, t_counter *c)
 {
@@ -51,90 +51,4 @@ void	ss(t_stack *stack_a, t_stack *stack_b, t_counter *c)
 	c->sa--;
 	c->sb--;
 	c->ss++;
-}
-
-void	pa(t_stack *stack_a, t_stack *stack_b, t_counter *c)
-{
-	t_node	*node;
-
-	c->pa++;
-	if (stack_b->size == 0)
-		return ;
-	node = pop(stack_b);
-	push(stack_a, node->content);
-	free(node);
-}
-
-void	pb(t_stack *stack_a, t_stack *stack_b, t_counter *c)
-{
-	t_node	*node;
-
-	c->pb++;
-	if (stack_a->size == 0)
-		return ;
-	node = pop(stack_a);
-	push(stack_b, node->content);
-	free(node);
-}
-
-void	ra(t_stack *stack_a, t_counter *c)
-{
-	t_node	*old_top;
-
-	c->ra++;
-	if (!stack_a || !stack_a->top)
-		return ;
-	old_top = stack_a->top;
-	stack_a->top = stack_a->top->below;
-	stack_a->bottom = old_top;
-}
-
-void	rb(t_stack *stack_b, t_counter *c)
-{
-	t_node	*old_top;
-
-	c->rb++;
-	if (!stack_b || !stack_b->top)
-		return ;
-	old_top = stack_b->top;
-	stack_b->top = stack_b->top->below;
-	stack_b->bottom = old_top;
-}
-
-void	rr(t_stack *stack_a, t_stack *stack_b, t_counter *c)
-{
-	c->rr++;
-	ra(stack_a, c);
-	rb(stack_b, c);
-	c->ra--;
-	c->rb--;
-}
-
-void	rra(t_stack *stack_a, t_counter *c)
-{
-	t_node	*old_bottom;
-
-	c->rra++;
-	old_bottom = stack_a->bottom;
-	stack_a->top = stack_a->bottom;
-	stack_a->bottom = old_bottom->above;
-}
-
-void	rrb(t_stack *stack_b, t_counter *c)
-{
-	t_node	*old_bottom;
-
-	c->rrb++;
-	old_bottom = stack_b->bottom;
-	stack_b->top = stack_b->bottom;
-	stack_b->bottom = old_bottom->above;
-}
-
-void	rrr(t_stack *stack_a, t_stack *stack-b, t_counter *c)
-{
-	c->rrr++;
-	rrb(stack_b, c);
-	rra(stack_a, c);
-	c->rra--;
-	c->rrb--;
 }

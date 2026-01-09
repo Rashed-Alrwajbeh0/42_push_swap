@@ -9,19 +9,42 @@
 #    Updated: 2026/01/09 19:15:59 by klafi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-NAME = printf.a
-SRCS = ft_printf.c ft_utoa.c han1.c han2.c ft_itoa.c ft_putchar_fd.c ft_putstr_fd.c ft_strlen.c
-OBJS := $(SRCS:.c=.o)
+HEADERS = push_swap.h
+NAME = push_swap
+PRINTF = printf.a
+SRCS1 = ft_printf.c \
+       ft_utoa.c \
+       han1.c \
+       han2.c \
+       ft_itoa.c \
+       ft_putchar_fd.c \
+       ft_putstr_fd.c \
+       ft_strlen.c
 
-all : $(NAME)
+SRCS2 = helper_functions_for_main.c \
+       push.c \
+       reverse_rotate.c \
+       stack.c \
+       main.c \
+       rotate.c \
+       stack_functions.c \
+       swap.c \
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
-$(wildcard %.o) : $(wildcard %.c)
+OBJS1 := $(SRCS1:.c=.o)
+OBJS2 := $(SRCS2:.c=.o)
+
+all : $(PRINTF) $(NAME)
+
+$(NAME): $(OBJS2) $(PRINTF)
+	$(CC) $(CFLAGS) $(OBJS2) $(PRINTF) -o $(NAME)
+$(PRINTF) : $(OBJS1)
+	ar rcs $(PRINTF) $(OBJS1)
+%.o :%.c $(HEADERS)
 	cc $(CFLAGS) -c $< -o $@
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS1) $(OBJS2)
 fclean : clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(PRINTF)
 re : fclean all

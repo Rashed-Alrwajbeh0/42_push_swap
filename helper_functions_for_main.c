@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   helper_functions_for_main.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
+/*   Updated: 2026/01/10 13:17:53 by ralrawaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long	len(char *str)
@@ -25,13 +37,13 @@ int	stringcmp(char *str1, char *str2)
 	return (1);
 }
 
-int	is_duplicate(t_stack MyStack, int val)
+int	is_duplicate(t_node *top, int val)
 {
-	while (MyStack)
+	while (top)
 	{
-		if (val == MyStack->content)
+		if (val == top->content)
 			return (1);
-		MyStack = MyStack->next;
+		top = top->below;
 	}
 	return (0);
 }
@@ -52,9 +64,9 @@ int	help_with_checker(char *str, int start, int end, t_stack *MyStack)
 	long	temp;
 
 	temp = string_to_int(str, start, end);
-	if (temp == 2147483648 || is_duplicate(*MyStack, temp))
+	if (temp == 2147483648 || is_duplicate(MyStack->top, temp))
 		return (free_all(MyStack), free(str), 0);
 	else
-		add_to_stack(MyStack, temp);
+		push(MyStack, temp);
 	return (1);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
+/*   Updated: 2026/01/09 21:23:29 by ralrawaj         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 long	string_to_int(char *str, int start, int end)
@@ -91,15 +103,15 @@ float	compute_disorder(t_node *tail, t_node *head)
 	total_pairs = 0;
 	while (tail != head)
 	{
-		temp = tail->next;
+		temp = tail->above;
 		while (temp != head)
 		{
 			total_pairs++;
 			if (tail->content > temp->content)
 				mistakes++;
-			temp = temp->next;
+			temp = temp->above;
 		}
-		tail = tail->next;
+		tail = tail->above;
 	}
 	if (!total_pairs)
 		return (2);
@@ -111,7 +123,7 @@ int	main(int argc, char *argv[])
 	int		i;
 	int		bench_mode;
 	char	*algo;
-	t_stack	a;
+	t_stack	*a;
 	t_node	*tmp_print;
 
 	bench_mode = 0;
@@ -129,20 +141,20 @@ int	main(int argc, char *argv[])
 		algo = argv[i];
 		i++;
 	}
-	a = NULL;
+	a = init_stack();
 	while (i < argc)
 	{
-		if (!checker(&a, argv[i]))
-			return (write(1, "Error\n", 6), free_all(&a));
+		if (!checker(a, argv[i]))
+			return (write(1, "Error\n", 6), 0);
 		i++;
 	}
-	tmp_print = a;
+	tmp_print = a->top;
 	while (tmp_print)
 	{
 		printf("d : %d.\n", tmp_print->content);
-		tmp_print = tmp_print->next;
+		tmp_print = tmp_print->below;
 	}
 	printf("s : %s.\n", algo);
-	free_all(&a);
+	free_all(a);
 	return (0);
 }
