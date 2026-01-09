@@ -6,21 +6,21 @@
 
 typedef struct node
 {
-	int	content;
-	struct node *next;
-} node;
+	int			content;
+	struct node	*next;
+	struct node	*prev;
+}	t_node;
 
-typedef node *stack;
+typedef t_node	*t_stack;
 
-int		add_to_stack(stack *s, int val);
-int		checker(stack *MyStack, char **algo, char *s);
-int		is_duplicate(stack MYstack, int val);
-long	string_to_int(char *str, int start, int end);
-long	len(char *str);
-char	*help_with_checker2(int start, int end, char *str, stack *MyStack);
-char	*remove_spaces(char *str);
-char	*help_with_checker(int start, int end, char *s, stack *MyStack);
-char	*to_lower(int start, int end, char *str);
-void	FreeAll(stack *MyStack);
-void    help_with_to_lower(int *num, int *algo, char *str, int end);
+int			add_to_stack(t_stack *s, int val);
+int			checker(t_stack *MyStack, char *s);
+int			stringcmp(char *str1, char *str2);
+int			help_with_string_to_int(char *str, int start, int end);
+int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
+int			is_duplicate(t_stack MYstack, int val);
+long		string_to_int(char *str, int start, int end);
+long		len(char *str);
+char		*remove_spaces(char *str);
+void		free_all(t_stack *MyStack);
 #endif
