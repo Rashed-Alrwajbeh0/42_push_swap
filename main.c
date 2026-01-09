@@ -81,6 +81,31 @@ int	checker(t_stack *MyStack, char *s)
 	return (free(str), 1);
 }
 
+float	compute_disorder(t_node *tail, t_node *head)
+{
+	int		mistakes;
+	float	total_pairs;
+	t_node	*temp;
+
+	mistakes = 0;
+	total_pairs = 0;
+	while (tail != head)
+	{
+		temp = tail->next;
+		while (temp != head)
+		{
+			total_pairs++;
+			if (tail->content > temp->content)
+				mistakes++;
+			temp = temp->next;
+		}
+		tail = tail->next;
+	}
+	if (!total_pairs)
+		return (2);
+	return (mistakes / total_pairs);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		i;
@@ -91,17 +116,15 @@ int	main(int argc, char *argv[])
 
 	bench_mode = 0;
 	i = 1;
-	if (stringcmp(argv[1], "--bench"))
+	if (stringcmp(argv[i], "--bench"))
 	{
 		bench_mode = 1;
 		i = 2;
 		printf("%d.\n", bench_mode);
 	}
 	algo = NULL;
-	if (stringcmp(argv[i], "--simple")
-		|| stringcmp(argv[i], "--medium")
-		|| stringcmp(argv[i], "--complex")
-		|| stringcmp(argv[i], "--adaptive"))
+	if (stringcmp(argv[i], "--simple") || stringcmp(argv[i], "--medium")
+		|| stringcmp(argv[i], "--complex") || stringcmp(argv[i], "--adaptive"))
 	{
 		algo = argv[i];
 		i++;
@@ -110,10 +133,7 @@ int	main(int argc, char *argv[])
 	while (i < argc)
 	{
 		if (!checker(&a, argv[i]))
-		{
-			write(1, "Error\n", 6);
-			return (free_all(&a), 0);
-		}
+			return (write(1, "Error\n", 6), free_all(&a));
 		i++;
 	}
 	tmp_print = a;
