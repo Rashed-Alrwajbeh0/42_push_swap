@@ -4,13 +4,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-typedef struct node
-{
-	int			content;
-	struct node	*next;
-	struct node	*prev;
-}	t_node;
-
 typedef t_node	*t_stack;
 
 int			add_to_stack(t_stack *s, int val);
