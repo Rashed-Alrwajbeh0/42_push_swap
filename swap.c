@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:18:59 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 12:13:41 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 12:41:43 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,12 @@ void	sa(t_stack *stack_a, t_counter *c)
 	t_node	*a;
 	t_node	*b;
 
-	c->sa++;
-	ft_printf("sa\n");
-	if (stack_a->size <= 1 || !stack_a || !c)
+	if (c)
+	{
+		c->sa++;
+		ft_printf("sa\n");
+	}
+	if (stack_a->size <= 1 || !stack_a)
 		return ;
 	a = stack_a->top;
 	b = a->below;
@@ -34,6 +37,7 @@ void	sa(t_stack *stack_a, t_counter *c)
 	a->below = b->below;
 	b->below = a;
 	b->above = stack_a->bottom;
+	stack_a->top = b;
 	stack_a->bottom->below = b;
 }
 
@@ -42,9 +46,12 @@ void	sb(t_stack *stack_b, t_counter *c)
 	t_node	*b;
 	t_node	*a;
 
-	c->sb++;
-	ft_printf("sb\n");
-	if (stack_b->size <= 1 || !stack_b || !c)
+	if (c)
+	{
+		c->sb++;
+		ft_printf("sb\n");
+	}
+	if (stack_b->size <= 1 || !stack_b)
 		return ;
 	a = stack_b->top;
 	b = a->below;
@@ -59,15 +66,14 @@ void	sb(t_stack *stack_b, t_counter *c)
 	a->below = b->below;
 	b->below = a;
 	b->above = stack_b->bottom;
+	stack_b->top = b;
 	stack_b->bottom->below = b;
 }
 
 void	ss(t_stack *stack_a, t_stack *stack_b, t_counter *c)
 {
-	sa(stack_a, c);
-	sb(stack_b, c);
-	c->sa--;
-	c->sb--;
+	sa(stack_a, NULL);
+	sb(stack_b, NULL);
 	c->ss++;
 	ft_printf("ss\n");
 }

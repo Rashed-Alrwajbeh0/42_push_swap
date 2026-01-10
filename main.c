@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 12:14:53 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 12:43:58 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,35 +137,34 @@ int	main(int argc, char *argv[])
 	push(stack_b, 5);
 	push(stack_b, 6);
 
-	ft_printf("stack a : \n");
+	ft_printf("===============\nstack a : \n");
     visualize(stack_a);
 	ft_printf("\nstack b : \n");
     visualize(stack_b);
 
-	sa(stack_a,  c);
-	ft_printf("stack a : \n");
+	ss(stack_a, stack_b, c);
+	ft_printf("===============\nstack a : \n");
+    visualize(stack_a);
+	ft_printf("\nstack b : \n");
+    visualize(stack_b);
+
+	pa(stack_a, stack_b, c);
+	ft_printf("===============\nstack a : \n");
     visualize(stack_a);
 	ft_printf("\nstack b : \n");
     visualize(stack_b);
 
 	pb(stack_a, stack_b, c);
-	ft_printf("stack a : \n");
+	ft_printf("===============\nstack a : \n");
     visualize(stack_a);
 	ft_printf("\nstack b : \n");
     visualize(stack_b);
 
-	sa(stack_a,  c);
-	ft_printf("stack a : \n");
+	ss(stack_a, stack_b, c);
+	ft_printf("===============\nstack a : \n");
     visualize(stack_a);
 	ft_printf("\nstack b : \n");
     visualize(stack_b);
-
-	sa(stack_a,  c);
-	ft_printf("stack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-
 	bench_mode = 0;
 	i = 1;
 	if (str_cmp(argv[i], "--bench"))
