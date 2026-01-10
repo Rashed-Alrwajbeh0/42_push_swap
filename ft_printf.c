@@ -92,7 +92,7 @@ int	gen_str(const char *s, int idx, va_list list, int len)
 		len += han_xcap(list);
 	else if (*(s + idx) == '%')
 		len += han_mod();
- 	else if(*(s + idx) == 'f')
+	else if (*(s + idx) == 'f')
 		len += han_f(list);
 	else
 	{

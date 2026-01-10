@@ -24,7 +24,7 @@ int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
 int			is_duplicate(int size, t_node *top, int val);
 long		string_to_int(char *str, int start, int end);
 long		len(char *str);
-float		compute_disorder(int size, t_node *tail, int total_pairs);
+float		compute_disorder(int size, t_node *top, int total_pairs);
 char		*remove_spaces(char *str);
 
 #endif

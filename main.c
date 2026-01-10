@@ -18,13 +18,14 @@ long	string_to_int(char *str, int start, int end)
 	int		i;
 
 	ans = 0;
+	i = 1;
 	if (str[start] == '-')
 	{
 		start++;
 		i = -1;
 	}
-	else
-		i = 1;
+	else if (str[start] == '+')
+		start++;
 	if (!help_with_string_to_int(str, start, end))
 		return (2147483648);
 	while (start < end)
@@ -51,13 +52,15 @@ char	*remove_spaces(char *str)
 		return (NULL);
 	i = -1;
 	k = -1;
+	while (*str == 32)
+		str++;
 	while (str[++i])
 	{
-		if (str[i] == 32 || str[i] == 9)
+		if (str[i] == 32)
 		{
 			if (str[i + 1] == '\0')
 				return (ans[++k] = '\0', ans);
-			if (str[i + 1] != 32 && str[i + 1] != 9)
+			if (str[i + 1] != 32)
 				ans[++k] = str[i];
 		}
 		else
@@ -69,55 +72,54 @@ char	*remove_spaces(char *str)
 
 int	checker(t_stack *MyStack, char *s)
 {
-	int		i;
 	int		start;
+	int		end;
 	char	*str;
 
-	i = -1;
-	start = 0;
 	str = remove_spaces(s);
 	if (!str)
 		return (0);
-	while (str[++i])
+	start = ft_strlen(str) - 1;
+	end = start + 1;
+	while (start >= 0)
 	{
-		if (str[i] == ' ' || str[i] == 9)
+		if (str[start] == ' ')
 		{
-			if (!help_with_checker(str, start, i, MyStack))
+			if (!help_with_checker(str, start + 1, end, MyStack))
 				return (0);
-			start = i + 1;
+			end = start;
 		}
+		start--;
 	}
-	if (start != i)
-		if (!help_with_checker(str, start, i, MyStack))
+	if (start != end)
+		if (!help_with_checker(str, start + 1, end, MyStack))
 			return (0);
 	return (free(str), 1);
 }
 
-float	compute_disorder(int size, t_node *tail, int total_pairs)
+float	compute_disorder(int size, t_node *top, int total_pairs)
 {
 	int		mistakes;
-	int		counter;
 	int		i;
 	t_node	*temp;
 
 	mistakes = 0;
-	counter = 0;
-	while (counter < size)
+	while (size)
 	{
-		i = ++counter;
-		temp = tail->above;
-		while (i++ < size)
+		i = --size;
+		temp = top->below;
+		while (i--)
 		{
 			total_pairs++;
-			if (tail->content > temp->content)
+			if (top->content > temp->content)
 				mistakes++;
-			temp = temp->above;
+			temp = temp->below;
 		}
-		tail = tail->above;
+		top = top->below;
 	}
 	if (!total_pairs)
 		return (2);
-	return (mistakes / (double)total_pairs);
+	return ( mistakes / (double)total_pairs);
 }
 
 int	main(int argc, char *argv[])
@@ -194,14 +196,15 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	a = init_stack();
-	while (i < argc)
+	while (argc > i)
 	{
-		if (!checker(a, argv[i]))
+		if (!checker(a, argv[argc - 1]))
 			return (write(1, "Error\n", 6), 0);
-		i++;
+		argc--;
 	}
 	i = 0;
-	disorder_metric = compute_disorder(a->size, a->bottom, 0);
+	visualize(a);
+	disorder_metric = compute_disorder(a->size, a->top, 0);
 	ft_printf("disorder : %f.\n", disorder_metric);
 	tmp_print = a->top;
 	while (i < a->size)
@@ -211,7 +214,6 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	ft_printf("s : %s.\n", algo);
-	ft_printf("12.1124 : %f\n", 12.1124);
 	free_stack(a);
 	return (0);
 }
