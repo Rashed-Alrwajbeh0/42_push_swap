@@ -6,7 +6,7 @@
 #    By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 14:24:57 by klafi             #+#    #+#              #
-#    Updated: 2026/01/10 10:45:08 by klafi            ###   ########.fr        #
+#    Updated: 2026/01/10 19:37:23 by klafi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -31,6 +31,7 @@ SRCS2 = helper_functions_for_main.c \
        rotate.c \
        stack2.c \
        swap.c \
+	   selection.c
 
 OBJS1 := $(SRCS1:.c=.o)
 OBJS2 := $(SRCS2:.c=.o)

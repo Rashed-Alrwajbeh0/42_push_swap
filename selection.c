@@ -6,13 +6,13 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:07:11 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 19:18:54 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 19:36:28 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int find_min(t_stack stack)
+static int find_min(t_stack *stack)
 {
 	t_node	*node;
 	int		min;

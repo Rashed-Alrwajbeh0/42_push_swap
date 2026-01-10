@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 14:43:57 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 19:19:22 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 19:36:08 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "printf.h"
 # include "stack.h"
-# include "sort_alogs.h"
 
 int			add_to_stack(t_stack *s, int val);
 int			checker(t_stack *MyStack, char *s);
@@ -27,5 +26,6 @@ long		string_to_int(char *str, int start, int end);
 long		len(char *str);
 double		compute_disorder(int size, t_node *tail, int total_pairs);
 char		*remove_spaces(char *str);
+void    	selection_sort(t_stack *a, t_stack *b, t_counter *c);
 
 #endif

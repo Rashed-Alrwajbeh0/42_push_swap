@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 19:19:55 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 19:34:09 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,7 @@ int	checker(t_stack *MyStack, char *s)
 	return (free(str), 1);
 }
 
-<<<<<<< HEAD
-float	compute_disorder(int size, t_node *top, int total_pairs)
-=======
-double	compute_disorder(int size, t_node *tail, int total_pairs)
->>>>>>> 3fa04fc (added the selection sort)
+double	compute_disorder(int size, t_node *top, int total_pairs)
 {
 	int		mistakes;
 	int		i;
@@ -139,7 +135,6 @@ int	main(int argc, char *argv[])
 /*
     t_stack *stack_a = init_stack();
     t_stack *stack_b = init_stack();
-	t_counter *c = init_counter();
 	push(stack_a, 1);
 	push(stack_a, 2);
 	push(stack_a, 3);
@@ -208,7 +203,6 @@ int	main(int argc, char *argv[])
 		argc--;
 	}
 	i = 0;
-	visualize(a);
 	disorder_metric = compute_disorder(a->size, a->top, 0);
 	ft_printf("disorder : %f.\n", disorder_metric);
 	tmp_print = a->top;
@@ -219,6 +213,11 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	ft_printf("s : %s.\n", algo);
+	b = init_stack();
+	t_counter *c = init_counter();
+	visualize(a);
+	selection_sort(a, b , c);
+	visualize(a);
 	free_stack(a);
 	return (0);
 }
