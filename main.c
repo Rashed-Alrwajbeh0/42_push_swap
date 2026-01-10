@@ -202,7 +202,7 @@ int	main(int argc, char *argv[])
 	}
 	i = 0;
 	disorder_metric = compute_disorder(a->size, a->bottom, 0);
-	printf("disorder : %f.\n", disorder_metric);
+	ft_printf("disorder : %f.\n", disorder_metric);
 	tmp_print = a->top;
 	while (i < a->size)
 	{
