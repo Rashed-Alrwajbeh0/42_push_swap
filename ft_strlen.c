@@ -6,11 +6,11 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/28 16:28:35 by klafi             #+#    #+#             */
-/*   Updated: 2025/12/27 13:18:10 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 09:54:34 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "printf.h"
 
 int	ft_strlen(const char *s)
 {

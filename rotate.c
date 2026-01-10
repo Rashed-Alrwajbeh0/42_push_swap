@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 14:01:18 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 14:09:49 by ralrawaj         ###   ########.fr       */
+/*   Updated: 2026/01/10 11:03:13 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	ra(t_stack *stack_a, t_counter *c)
 	t_node	*old_top;
 
 	c->ra++;
+	ft_printf("ra\n");
 	if (!stack_a || !stack_a->top)
 		return ;
 	old_top = stack_a->top;
@@ -29,6 +30,7 @@ void	rb(t_stack *stack_b, t_counter *c)
 	t_node	*old_top;
 
 	c->rb++;
+	ft_printf("rb\n");
 	if (!stack_b || !stack_b->top)
 		return ;
 	old_top = stack_b->top;
@@ -38,9 +40,10 @@ void	rb(t_stack *stack_b, t_counter *c)
 
 void	rr(t_stack *stack_a, t_stack *stack_b, t_counter *c)
 {
-	c->rr++;
 	ra(stack_a, c);
 	rb(stack_b, c);
 	c->ra--;
 	c->rb--;
+	c->rr++;
+	ft_printf("rr\n");
 }

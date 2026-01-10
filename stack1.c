@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   stack1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 17:29:21 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/09 21:10:54 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 10:49:38 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,16 @@ void	push(t_stack *stack, int elem)
 	new_node->below = new_node;
 	new_node->content = elem;
 	if (stack->top)
+	{
 		new_node->below = stack->top;
+		stack->top->above = new_node;
+	}
 	stack->top = new_node;
 	if (stack->bottom)
+	{
 		new_node->above = stack->bottom;
+		stack->bottom->below = new_node;
+	}
 	else
 		stack->bottom = new_node;
 	stack->size++;
@@ -57,6 +63,7 @@ t_node	*pop(t_stack *stack)
 	{
 		stack->top = top_node->below;
 		stack->top->above = stack->bottom;
+		stack->bottom->below = stack->top;
 		top_node->below = NULL;
 		top_node->above = NULL;
 	}
@@ -80,7 +87,7 @@ void	visualize(t_stack *stack)
 	}
 	ft_printf("top -> %d", stack->top->content);
 	node = stack->top->below;
-	while (node != stack->top && node)
+	while (node != stack->top)
 	{
 		ft_printf(" -> %d", node->content);
 		node = node->below;

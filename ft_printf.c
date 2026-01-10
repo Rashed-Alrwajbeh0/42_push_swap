@@ -6,11 +6,12 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 16:25:19 by klafi             #+#    #+#             */
-/*   Updated: 2025/12/27 13:48:03 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 09:53:45 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "printf.h"
 
 int	dig_num_hex(unsigned long dec)
 {

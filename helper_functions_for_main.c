@@ -6,23 +6,13 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 13:17:53 by ralrawaj         ###   ########.fr       */
+/*   Updated: 2026/01/10 10:21:50 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	len(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	stringcmp(char *str1, char *str2)
+int	str_cmp(char *str1, char *str2)
 {
 	int	i;
 

@@ -6,11 +6,11 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 17:12:54 by klafi             #+#    #+#             */
-/*   Updated: 2025/12/26 14:07:03 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 09:53:55 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "printf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

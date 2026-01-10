@@ -6,11 +6,11 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 20:21:12 by klafi             #+#    #+#             */
-/*   Updated: 2025/12/27 09:41:55 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 09:53:19 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "printf.h"
 
 static int	count_dig(int n)
 {

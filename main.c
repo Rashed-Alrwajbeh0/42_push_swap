@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/09 21:23:29 by ralrawaj         ###   ########.fr       */
+/*   Updated: 2026/01/10 12:14:53 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*remove_spaces(char *str)
 	int		i;
 	int		k;
 
-	ans = malloc(len(str) + 1);
+	ans = malloc(ft_strlen(str) + 1);
 	if (!ans)
 		return (NULL);
 	i = -1;
@@ -126,17 +126,57 @@ int	main(int argc, char *argv[])
 	t_stack	*a;
 	t_node	*tmp_print;
 
+    t_stack *stack_a = init_stack();
+    t_stack *stack_b = init_stack();
+	t_counter *c = init_counter();
+	push(stack_a, 1);
+	push(stack_a, 2);
+	push(stack_a, 3);
+
+	push(stack_b, 4);
+	push(stack_b, 5);
+	push(stack_b, 6);
+
+	ft_printf("stack a : \n");
+    visualize(stack_a);
+	ft_printf("\nstack b : \n");
+    visualize(stack_b);
+
+	sa(stack_a,  c);
+	ft_printf("stack a : \n");
+    visualize(stack_a);
+	ft_printf("\nstack b : \n");
+    visualize(stack_b);
+
+	pb(stack_a, stack_b, c);
+	ft_printf("stack a : \n");
+    visualize(stack_a);
+	ft_printf("\nstack b : \n");
+    visualize(stack_b);
+
+	sa(stack_a,  c);
+	ft_printf("stack a : \n");
+    visualize(stack_a);
+	ft_printf("\nstack b : \n");
+    visualize(stack_b);
+
+	sa(stack_a,  c);
+	ft_printf("stack a : \n");
+    visualize(stack_a);
+	ft_printf("\nstack b : \n");
+    visualize(stack_b);
+
 	bench_mode = 0;
 	i = 1;
-	if (stringcmp(argv[i], "--bench"))
+	if (str_cmp(argv[i], "--bench"))
 	{
 		bench_mode = 1;
 		i = 2;
-		printf("%d.\n", bench_mode);
+		ft_printf("bench mode : %d.\n", bench_mode);
 	}
 	algo = NULL;
-	if (stringcmp(argv[i], "--simple") || stringcmp(argv[i], "--medium")
-		|| stringcmp(argv[i], "--complex") || stringcmp(argv[i], "--adaptive"))
+	if (str_cmp(argv[i], "--simple") || str_cmp(argv[i], "--medium")
+		|| str_cmp(argv[i], "--complex") || str_cmp(argv[i], "--adaptive"))
 	{
 		algo = argv[i];
 		i++;
@@ -151,10 +191,10 @@ int	main(int argc, char *argv[])
 	tmp_print = a->top;
 	while (tmp_print)
 	{
-		printf("d : %d.\n", tmp_print->content);
+		ft_printf("d : %d.\n", tmp_print->content);
 		tmp_print = tmp_print->below;
 	}
-	printf("s : %s.\n", algo);
+	ft_printf("s : %s.\n", algo);
 	free_all(a);
 	return (0);
 }

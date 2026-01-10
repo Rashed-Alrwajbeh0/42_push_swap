@@ -6,12 +6,12 @@
 #    By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 14:24:57 by klafi             #+#    #+#              #
-#    Updated: 2026/01/09 19:15:59 by klafi            ###   ########.fr        #
+#    Updated: 2026/01/10 10:45:08 by klafi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-HEADERS = push_swap.h
+CFLAGS = -Wall -Wextra -Werror -g
+HEADERS = push_swap.h stack.h printf.h
 NAME = push_swap
 PRINTF = printf.a
 SRCS1 = ft_printf.c \
@@ -26,10 +26,10 @@ SRCS1 = ft_printf.c \
 SRCS2 = helper_functions_for_main.c \
        push.c \
        reverse_rotate.c \
-       stack.c \
+       stack1.c \
        main.c \
        rotate.c \
-       stack_functions.c \
+       stack2.c \
        swap.c \
 
 OBJS1 := $(SRCS1:.c=.o)
