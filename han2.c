@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 15:11:11 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 14:01:08 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 15:09:39 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	han_mod(void)
 	write(1, "%", 1);
 	return (1);
 }
-#include <stdio.h>
+
 int	han_f(va_list list)
 {
 	double	num;
