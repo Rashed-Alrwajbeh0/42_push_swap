@@ -93,16 +93,14 @@ int	checker(t_stack *MyStack, char *s)
 	return (free(str), 1);
 }
 
-float	compute_disorder(int size, t_node *tail)
+float	compute_disorder(int size, t_node *tail, int total_pairs)
 {
 	int		mistakes;
 	int		counter;
 	int		i;
-	int		total_pairs;
 	t_node	*temp;
 
 	mistakes = 0;
-	total_pairs = 0;
 	counter = 0;
 	while (counter < size)
 	{
@@ -203,7 +201,7 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	i = 0;
-	disorder_mitrec = compute_disorder(a->size, a->bottom);
+	disorder_mitrec = compute_disorder(a->size, a->bottom, 0);
 	printf("disorder : %f.\n", disorder_mitrec);
 	tmp_print = a->top;
 	while (i < a->size)
