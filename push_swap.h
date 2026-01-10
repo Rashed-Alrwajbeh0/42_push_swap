@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 14:43:57 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 13:36:31 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 19:19:22 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "printf.h"
 # include "stack.h"
+# include "sort_alogs.h"
 
 int			add_to_stack(t_stack *s, int val);
 int			checker(t_stack *MyStack, char *s);
@@ -24,7 +25,7 @@ int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
 int			is_duplicate(int size, t_node *top, int val);
 long		string_to_int(char *str, int start, int end);
 long		len(char *str);
-float		compute_disorder(int size, t_node *top, int total_pairs);
+double		compute_disorder(int size, t_node *tail, int total_pairs);
 char		*remove_spaces(char *str);
 
 #endif

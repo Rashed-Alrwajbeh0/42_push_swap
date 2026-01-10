@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 14:05:17 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 19:19:55 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,11 @@ int	checker(t_stack *MyStack, char *s)
 	return (free(str), 1);
 }
 
+<<<<<<< HEAD
 float	compute_disorder(int size, t_node *top, int total_pairs)
+=======
+double	compute_disorder(int size, t_node *tail, int total_pairs)
+>>>>>>> 3fa04fc (added the selection sort)
 {
 	int		mistakes;
 	int		i;
@@ -118,8 +122,8 @@ float	compute_disorder(int size, t_node *top, int total_pairs)
 		top = top->below;
 	}
 	if (!total_pairs)
-		return (2);
-	return ( mistakes / (double)total_pairs);
+		return (-1);
+	return (mistakes / (double)total_pairs);
 }
 
 int	main(int argc, char *argv[])
@@ -129,6 +133,7 @@ int	main(int argc, char *argv[])
 	int		bench_mode;
 	char	*algo;
 	t_stack	*a;
+	t_stack *b;
 	t_node	*tmp_print;
 
 /*
