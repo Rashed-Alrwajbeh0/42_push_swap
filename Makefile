@@ -31,7 +31,7 @@ SRCS2 = helper_functions_for_main.c \
        rotate.c \
        stack2.c \
        swap.c \
-	   selection.c
+       selection.c
 
 OBJS1 := $(SRCS1:.c=.o)
 OBJS2 := $(SRCS2:.c=.o)

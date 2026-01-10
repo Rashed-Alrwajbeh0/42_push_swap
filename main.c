@@ -130,7 +130,7 @@ int	main(int argc, char *argv[])
 	char	*algo;
 	t_stack	*a;
 	t_stack *b;
-	t_node	*tmp_print;
+//	t_node	*tmp_print;
 
 /*
     t_stack *stack_a = init_stack();
@@ -205,18 +205,20 @@ int	main(int argc, char *argv[])
 	i = 0;
 	disorder_metric = compute_disorder(a->size, a->top, 0);
 	ft_printf("disorder : %f.\n", disorder_metric);
-	tmp_print = a->top;
-	while (i < a->size)
-	{
-		ft_printf("d : %d.\n", tmp_print->content);
-		tmp_print = tmp_print->below;
-		i++;
-	}
+//	tmp_print = a->top;
+//	while (i < a->size)
+//	{
+//		ft_printf("d : %d.\n", tmp_print->content);
+//		tmp_print = tmp_print->below;
+//		i++;
+//	}
 	ft_printf("s : %s.\n", algo);
 	b = init_stack();
 	t_counter *c = init_counter();
-	visualize(a);
-	selection_sort(a, b , c);
+//	visualize(a);
+	ft_printf("------------------------------\n");
+	selection_sort(a, b , c, a->size);
+	ft_printf("------------------------------\n");
 	visualize(a);
 	free_stack(a);
 	return (0);

@@ -26,6 +26,6 @@ long		string_to_int(char *str, int start, int end);
 long		len(char *str);
 double		compute_disorder(int size, t_node *tail, int total_pairs);
 char		*remove_spaces(char *str);
-void    	selection_sort(t_stack *a, t_stack *b, t_counter *c);
+void		selection_sort(t_stack *a, t_stack *b, t_counter *c, int size);
 
 #endif
