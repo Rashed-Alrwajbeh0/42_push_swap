@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 16:25:19 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 09:53:45 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 13:45:30 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	gen_str(const char *s, int idx, va_list list, int len)
 		len += han_xcap(list);
 	else if (*(s + idx) == '%')
 		len += han_mod();
+ 	else if(*(s + idx) == 'f')
+		len += han_f(list);
 	else
 	{
 		write(1, s + idx - 1, 2);

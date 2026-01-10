@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 13:37:56 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 14:05:17 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,15 +119,16 @@ float	compute_disorder(int size, t_node *tail, int total_pairs)
 		return (2);
 	return (mistakes / (double)total_pairs);
 }
-#include <stdio.h>
+
 int	main(int argc, char *argv[])
 {
 	int		i;
-	double		disorder_mitrec;
+	double		disorder_metric;
 	int		bench_mode;
 	char	*algo;
 	t_stack	*a;
 	t_node	*tmp_print;
+
 /*
     t_stack *stack_a = init_stack();
     t_stack *stack_b = init_stack();
@@ -176,8 +177,7 @@ int	main(int argc, char *argv[])
     visualize(stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	free(c);
-*/
+	free(c);*/
 	bench_mode = 0;
 	i = 1;
 	if (str_cmp(argv[i], "--bench"))
@@ -201,8 +201,8 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	i = 0;
-	disorder_mitrec = compute_disorder(a->size, a->bottom, 0);
-	printf("disorder : %f.\n", disorder_mitrec);
+	disorder_metric = compute_disorder(a->size, a->bottom, 0);
+	printf("disorder : %f.\n", disorder_metric);
 	tmp_print = a->top;
 	while (i < a->size)
 	{
@@ -211,6 +211,7 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	ft_printf("s : %s.\n", algo);
+	ft_printf("12.1124 : %f\n", 12.1124);
 	free_stack(a);
 	return (0);
 }
