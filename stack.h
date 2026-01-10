@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 09:43:18 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 09:56:51 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 13:36:56 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_node		*pop(t_stack *stack);
 t_stack		*init_stack(void);
 t_counter	*init_counter(void);
 void		visualize(t_stack *stack);
+void		free_stack(t_stack *stack);
 
 void		sa(t_stack *stack_a, t_counter *c);
 void		sb(t_stack *stack_b, t_counter *c);

@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 14:43:57 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 10:21:24 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 13:36:31 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,5 @@ long		string_to_int(char *str, int start, int end);
 long		len(char *str);
 float		compute_disorder(t_node *tail, t_node *head);
 char		*remove_spaces(char *str);
-void		free_all(t_stack *MyStack);
 
 #endif

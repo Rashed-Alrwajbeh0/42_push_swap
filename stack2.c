@@ -6,21 +6,21 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 20:17:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/09 20:25:53 by ralrawaj         ###   ########.fr       */
+/*   Updated: 2026/01/10 13:37:16 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(t_stack *MyStack)
+void	free_stack(t_stack *stack)
 {
 	t_node	*temp;
 
-	temp = pop(MyStack);
+	temp = pop(stack);
 	while (temp)
 	{
 		free(temp);
-		temp = pop(MyStack);
+		temp = pop(stack);
 	}
-	free(MyStack);
+	free(stack);
 }

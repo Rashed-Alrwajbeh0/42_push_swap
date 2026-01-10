@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 13:25:59 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 13:37:56 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,9 @@ int	main(int argc, char *argv[])
     visualize(stack_a);
 	ft_printf("\nstack b : \n");
     visualize(stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	free(c);
 
 	bench_mode = 0;
 	i = 1;
@@ -201,6 +204,6 @@ int	main(int argc, char *argv[])
 		tmp_print = tmp_print->below;
 	}
 	ft_printf("s : %s.\n", algo);
-	free_all(a);
+	free_stack(a);
 	return (0);
 }
