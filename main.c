@@ -93,18 +93,22 @@ int	checker(t_stack *MyStack, char *s)
 	return (free(str), 1);
 }
 
-float	compute_disorder(t_node *tail, t_node *head)
+float	compute_disorder(int size, t_node *tail)
 {
 	int		mistakes;
-	float	total_pairs;
+	int		counter;
+	int		i;
+	int		total_pairs;
 	t_node	*temp;
 
 	mistakes = 0;
 	total_pairs = 0;
-	while (tail != head)
+	counter = 0;
+	while (counter < size)
 	{
+		i = ++counter;
 		temp = tail->above;
-		while (temp != head)
+		while (i++ < size)
 		{
 			total_pairs++;
 			if (tail->content > temp->content)
@@ -115,17 +119,18 @@ float	compute_disorder(t_node *tail, t_node *head)
 	}
 	if (!total_pairs)
 		return (2);
-	return (mistakes / total_pairs);
+	return (mistakes / (double)total_pairs);
 }
-
+#include <stdio.h>
 int	main(int argc, char *argv[])
 {
 	int		i;
+	double		disorder_mitrec;
 	int		bench_mode;
 	char	*algo;
 	t_stack	*a;
 	t_node	*tmp_print;
-
+/*
     t_stack *stack_a = init_stack();
     t_stack *stack_b = init_stack();
 	t_counter *c = init_counter();
@@ -174,7 +179,7 @@ int	main(int argc, char *argv[])
 	free_stack(stack_a);
 	free_stack(stack_b);
 	free(c);
-
+*/
 	bench_mode = 0;
 	i = 1;
 	if (str_cmp(argv[i], "--bench"))
@@ -197,11 +202,15 @@ int	main(int argc, char *argv[])
 			return (write(1, "Error\n", 6), 0);
 		i++;
 	}
+	i = 0;
+	disorder_mitrec = compute_disorder(a->size, a->bottom);
+	printf("disorder : %f.\n", disorder_mitrec);
 	tmp_print = a->top;
-	while (tmp_print)
+	while (i < a->size)
 	{
 		ft_printf("d : %d.\n", tmp_print->content);
 		tmp_print = tmp_print->below;
+		i++;
 	}
 	ft_printf("s : %s.\n", algo);
 	free_stack(a);

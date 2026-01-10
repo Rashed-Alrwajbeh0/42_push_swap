@@ -21,10 +21,10 @@ int			checker(t_stack *MyStack, char *s);
 int			str_cmp(char *str1, char *str2);
 int			help_with_string_to_int(char *str, int start, int end);
 int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
-int			is_duplicate(t_node *top, int val);
+int			is_duplicate(int size, t_node *top, int val);
 long		string_to_int(char *str, int start, int end);
 long		len(char *str);
-float		compute_disorder(t_node *tail, t_node *head);
+float		compute_disorder(int size, t_node *tail);
 char		*remove_spaces(char *str);
 
 #endif

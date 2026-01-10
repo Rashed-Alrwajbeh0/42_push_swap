@@ -27,13 +27,17 @@ int	str_cmp(char *str1, char *str2)
 	return (1);
 }
 
-int	is_duplicate(t_node *top, int val)
+int	is_duplicate(int size, t_node *top, int val)
 {
-	while (top)
+	int	counter;
+
+	counter = 0;
+	while (counter < size)
 	{
 		if (val == top->content)
 			return (1);
 		top = top->below;
+		counter++;
 	}
 	return (0);
 }
@@ -54,7 +58,7 @@ int	help_with_checker(char *str, int start, int end, t_stack *MyStack)
 	long	temp;
 
 	temp = string_to_int(str, start, end);
-	if (temp == 2147483648 || is_duplicate(MyStack->top, temp))
+	if (temp == 2147483648 || is_duplicate(MyStack->size, MyStack->top, temp))
 		return (free_stack(MyStack), free(str), 0);
 	else
 		push(MyStack, temp);
