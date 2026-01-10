@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 10:21:50 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/10 13:39:16 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	help_with_checker(char *str, int start, int end, t_stack *MyStack)
 
 	temp = string_to_int(str, start, end);
 	if (temp == 2147483648 || is_duplicate(MyStack->top, temp))
-		return (free_all(MyStack), free(str), 0);
+		return (free_stack(MyStack), free(str), 0);
 	else
 		push(MyStack, temp);
 	return (1);
