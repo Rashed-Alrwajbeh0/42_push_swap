@@ -12,10 +12,14 @@
 
 #include "push_swap.h"
 
-int	check_order(t_node *head, int size)
+static void	selection_three(t_stack *a, t_counter *c);
+
+static int	check_order(t_node *head, int size)
 {
 	int	temp;
 
+	if (size <= 1)
+		return (1);
 	while (size > 1)
 	{
 		temp = head->content;
@@ -27,78 +31,82 @@ int	check_order(t_node *head, int size)
 	return (1);
 }
 
-static int find_min(t_stack *stack)
+static int	find_min(t_stack *stack)
 {
 	t_node	*node;
 	int		min;
-	int		i;
 	int		ans;
+	int		idx;
 
 	node = stack->top;
 	min = node->content;
-	i = 1;
-	ans = i;
-	while (node != stack->bottom)
+	ans = 1;
+	idx = 1;
+	while (idx <= stack->size)
 	{
 		if (node->content < min)
 		{
 			min = node->content;
-			ans = i;
+			ans = idx;
 		}
-		i++;	
 		node = node->below;
-	}
-	if (node->content < min)
-	{
-		min = node->content;
-		ans = i;
+		idx++;
 	}
 	return (ans);
 }
 
-void	selection_sort(t_stack *a, t_stack *b, t_counter *c, int size)
+void	selection_sort(t_stack *a, t_stack *b, t_counter *c)
 {
 	int	num;
-	int	i;
-	int	y;
+	int	moves;
 
-	while (1)
+	while (a->size > 3)
 	{
 		num = find_min(a);
-		i = 1;
-		if (num < size / 2)
-		{
-			while (i < num)
-			{
+		if (num <= (a->size / 2) + (a->size % 2))
+			while (num-- > 1)
 				ra(a, c);
-				i++;
-			}
-			if (!check_order(a->top, a->size))
-				pb(a, b, c);
-			else
-				break ; 
-		}
 		else
 		{
-			while (i <= size - num)
-			{
+			moves = a->size - num + 1;
+			while (moves-- > 0)
 				rra(a, c);
-				i++;
-			}
-			if (!check_order(a->top, a->size))
-				pb(a, b, c);
-			else
-				break ; 
 		}
+		if (check_order(a->top, a->size))
+			break ;
+		pb(a, b, c);
 	}
-	if (b->size)
-	{
-		y = b->size;
-		while (y > 0)
-		{
-			pa(a, b, c);
-			y--;
-		}
-	}
+	if (a->size > 1 && !check_order(a->top, a->size))
+		selection_three(a, c);
+	while (b->size > 0)
+		pa(a, b, c);
 }
 
+static void	selection_three(t_stack *a, t_counter *c)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	first = a->top->content;
+	second = a->top->below->content;
+	third = a->bottom->content;
+	if (a->size == 2 && a->top->content > a->top->below->content)
+		sa(a, c);
+	else if (first < second && second > third && first < third)
+	{
+		sa(a, c);
+		ra(a, c);
+	}
+	else if (first < second && second > third && first > third)
+		rra(a, c);
+	else if (first > second && second < third && first < third)
+		sa(a, c);
+	else if (first > second && second < third && first > third)
+		ra(a, c);
+	else if (first > second && second > third)
+	{
+		sa(a, c);
+		rra(a, c);
+	}
+}

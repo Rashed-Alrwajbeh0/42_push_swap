@@ -97,13 +97,15 @@ int	checker(t_stack *MyStack, char *s)
 	return (free(str), 1);
 }
 
-double	compute_disorder(int size, t_node *top, int total_pairs)
+double	compute_disorder(int size, t_node *top)
 {
 	int		mistakes;
 	int		i;
+	int		total_pairs;
 	t_node	*temp;
 
 	mistakes = 0;
+	total_pairs = 0;
 	while (size)
 	{
 		i = --size;
@@ -125,101 +127,24 @@ double	compute_disorder(int size, t_node *top, int total_pairs)
 int	main(int argc, char *argv[])
 {
 	int		i;
-	double		disorder_metric;
 	int		bench_mode;
 	char	*algo;
 	t_stack	*a;
-	t_stack *b;
-//	t_node	*tmp_print;
 
-/*
-    t_stack *stack_a = init_stack();
-    t_stack *stack_b = init_stack();
-	push(stack_a, 1);
-	push(stack_a, 2);
-	push(stack_a, 3);
-
-	push(stack_b, 4);
-	push(stack_b, 5);
-	push(stack_b, 6);
-
-	ft_printf("===============\nstack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-
-	rra(stack_a, c);
-	ft_printf("===============\nstack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-
-	pa(stack_a, stack_b, c);
-	ft_printf("===============\nstack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-
-	rrb(stack_b, c);
-	ft_printf("===============\nstack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-
-	pa(stack_a, stack_b, c);
-	ft_printf("===============\nstack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-
-	rrr(stack_a, stack_b, c);
-	ft_printf("===============\nstack a : \n");
-    visualize(stack_a);
-	ft_printf("\nstack b : \n");
-    visualize(stack_b);
-	free_stack(stack_a);
-	free_stack(stack_b);
-	free(c);*/
 	bench_mode = 0;
 	i = 1;
 	if (str_cmp(argv[i], "--bench"))
-	{
-		bench_mode = 1;
-		i = 2;
-		ft_printf("bench mode : %d.\n", bench_mode);
-	}
+		bench_mode = i++;
 	algo = NULL;
 	if (str_cmp(argv[i], "--simple") || str_cmp(argv[i], "--medium")
 		|| str_cmp(argv[i], "--complex") || str_cmp(argv[i], "--adaptive"))
-	{
-		algo = argv[i];
-		i++;
-	}
+		algo = argv[i++];
 	a = init_stack();
-	while (argc > i)
-	{
-		if (!checker(a, argv[argc - 1]))
-			return (write(1, "Error\n", 6), 0);
-		argc--;
-	}
-	i = 0;
-	disorder_metric = compute_disorder(a->size, a->top, 0);
-	ft_printf("disorder : %f.\n", disorder_metric);
-//	tmp_print = a->top;
-//	while (i < a->size)
-//	{
-//		ft_printf("d : %d.\n", tmp_print->content);
-//		tmp_print = tmp_print->below;
-//		i++;
-//	}
-	ft_printf("s : %s.\n", algo);
-	b = init_stack();
-	t_counter *c = init_counter();
-//	visualize(a);
-	ft_printf("------------------------------\n");
-	selection_sort(a, b , c, a->size);
-	ft_printf("------------------------------\n");
-	visualize(a);
-	free_stack(a);
+	if (!a)
+		return (ft_printf("Error\n"), 0);
+	while (argc-- > i)
+		if (!checker(a, argv[argc]))
+			return (ft_printf("Error\n"), 0);
+	root(a, algo, bench_mode);
 	return (0);
 }

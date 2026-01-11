@@ -24,8 +24,9 @@ int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
 int			is_duplicate(int size, t_node *top, int val);
 long		string_to_int(char *str, int start, int end);
 long		len(char *str);
-double		compute_disorder(int size, t_node *tail, int total_pairs);
+double		compute_disorder(int size, t_node *tail);
 char		*remove_spaces(char *str);
-void		selection_sort(t_stack *a, t_stack *b, t_counter *c, int size);
+void		selection_sort(t_stack *a, t_stack *b, t_counter *c);
+void		root(t_stack *a, char *algo, int bench_mode);
 
 #endif
