@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 12:02:32 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/11 12:03:45 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 12:28:20 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ int	root(t_stack *a, char *algo, int bench_mode)
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	ft_printf("Disorder Metric : %f\n", disorder_metric);
 	visualize(a);
-	ft_printf("is it ordered ?\n%d", check_order(a->top, a->size));
+	ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }

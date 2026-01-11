@@ -6,13 +6,11 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:07:11 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/11 12:02:03 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 12:32:43 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//static void	selection_three(t_stack *a, t_counter *c);
 
 int	check_order(t_node *top, int size)
 {
@@ -79,34 +77,3 @@ void	selection_sort(t_stack *a, t_stack *b, t_counter *c)
 	while (b->size > 0)
 		pa(a, b, c);
 }
-
-	//if (a->size > 1 && !check_order(a->top, a->size))
-	//	selection_three(a, c);
-/*static void	selection_three(t_stack *a, t_counter *c)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	first = a->top->content;
-	second = a->top->below->content;
-	third = a->bottom->content;
-	if (a->size == 2 && a->top->content > a->top->below->content)
-		sa(a, c);
-	else if (first < second && second > third && first < third)
-	{
-		sa(a, c);
-		ra(a, c);
-	}
-	else if (first < second && second > third && first > third)
-		rra(a, c);
-	else if (first > second && second < third && first < third)
-		sa(a, c);
-	else if (first > second && second < third && first > third)
-		ra(a, c);
-	else if (first > second && second > third)
-	{
-		sa(a, c);
-		rra(a, c);
-	}
-}*/
