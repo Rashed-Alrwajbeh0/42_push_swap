@@ -6,15 +6,15 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:07:11 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 19:42:03 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 12:02:03 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	selection_three(t_stack *a, t_counter *c);
+//static void	selection_three(t_stack *a, t_counter *c);
 
-static int	check_order(t_node *head, int size)
+int	check_order(t_node *top, int size)
 {
 	int	temp;
 
@@ -22,9 +22,9 @@ static int	check_order(t_node *head, int size)
 		return (1);
 	while (size > 1)
 	{
-		temp = head->content;
-		head = head->below;
-		if (head->content < temp)
+		temp = top->content;
+		top = top->below;
+		if (top->content < temp)
 			return (0);
 		size--;
 	}
@@ -60,7 +60,7 @@ void	selection_sort(t_stack *a, t_stack *b, t_counter *c)
 	int	num;
 	int	moves;
 
-	while (a->size > 3)
+	while (a->size > 1)
 	{
 		num = find_min(a);
 		if (num <= (a->size / 2) + (a->size % 2))
@@ -76,13 +76,13 @@ void	selection_sort(t_stack *a, t_stack *b, t_counter *c)
 			break ;
 		pb(a, b, c);
 	}
-	if (a->size > 1 && !check_order(a->top, a->size))
-		selection_three(a, c);
 	while (b->size > 0)
 		pa(a, b, c);
 }
 
-static void	selection_three(t_stack *a, t_counter *c)
+	//if (a->size > 1 && !check_order(a->top, a->size))
+	//	selection_three(a, c);
+/*static void	selection_three(t_stack *a, t_counter *c)
 {
 	int	first;
 	int	second;
@@ -109,4 +109,4 @@ static void	selection_three(t_stack *a, t_counter *c)
 		sa(a, c);
 		rra(a, c);
 	}
-}
+}*/

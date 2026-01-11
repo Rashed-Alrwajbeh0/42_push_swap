@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   root.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/11 12:02:32 by klafi             #+#    #+#             */
+/*   Updated: 2026/01/11 12:03:45 by klafi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	free_all(t_stack *a, t_stack *b, t_counter *c)
@@ -16,10 +28,10 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	b = init_stack();
 	c = init_counter();
 	if (!b || !c)
-		return (ft_printf("Error\n"), free_all(a, b, c), 1);
+		return (write(2, "Error\n", 6), free_all(a, b, c), 1);
 	disorder_metric = compute_disorder(a->size, a->top);
 	if (disorder_metric == -1)
-		return (ft_printf("Error\n"), free_all(a, b, c), 1);
+		return (write(2, "Error\n", 6), free_all(a, b, c), 1);
 	if (bench_mode)
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	if (algo && str_cmp(algo, "--simple"))
@@ -32,5 +44,6 @@ int	root(t_stack *a, char *algo, int bench_mode)
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	ft_printf("Disorder Metric : %f\n", disorder_metric);
 	visualize(a);
+	ft_printf("is it ordered ?\n%d", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }

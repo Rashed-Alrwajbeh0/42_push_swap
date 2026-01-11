@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/11 09:53:20 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 11:42:49 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int	is_duplicate(int size, t_node *top, int val)
 	return (0);
 }
 
-int	is_num(char *str, int start, int end)
+int	is_int(char *str, int start, int end)
 {
+	if (end - start > 10)
+		return (0);
 	while (start < end)
 	{
 		if (str[start] > '9' || str[start] < '0')
