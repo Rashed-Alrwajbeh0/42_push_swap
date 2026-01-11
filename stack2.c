@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 20:17:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 13:37:16 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 10:34:19 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_stack(t_stack *stack)
 {
 	t_node	*temp;
 
+	if (!stack)
+		return ;
 	temp = pop(stack);
 	while (temp)
 	{

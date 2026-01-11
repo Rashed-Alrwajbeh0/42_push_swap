@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 13:39:16 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 09:53:20 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_duplicate(int size, t_node *top, int val)
 	return (0);
 }
 
-int	help_with_string_to_int(char *str, int start, int end)
+int	is_num(char *str, int start, int end)
 {
 	while (start < end)
 	{

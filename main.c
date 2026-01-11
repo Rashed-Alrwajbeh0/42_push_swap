@@ -6,14 +6,14 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 19:45:44 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/11 10:37:14 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 long	string_to_int(char *str, int start, int end)
-{
+{//this function should be checked for edge cases.
 	long	ans;
 	int		i;
 
@@ -26,12 +26,10 @@ long	string_to_int(char *str, int start, int end)
 	}
 	else if (str[start] == '+')
 		start++;
-	if (!help_with_string_to_int(str, start, end))
+	if (!is_num(str, start, end))
 		return (2147483648);
 	while (start < end)
 	{
-		if (str[start] == '.')
-			return (2147483648);
 		ans *= 10;
 		ans += str[start] - '0';
 		start++;
@@ -141,10 +139,9 @@ int	main(int argc, char *argv[])
 		algo = argv[i++];
 	a = init_stack();
 	if (!a)
-		return (ft_printf("Error\n"), 0);
+		return (ft_printf("Error\n"), 1);
 	while (argc-- > i)
 		if (!checker(a, argv[argc]))
-			return (ft_printf("Error\n"), 0);
-	root(a, algo, bench_mode);
-	return (0);
+			return (ft_printf("Error\n"), 1);
+	return (root(a, algo, bench_mode));
 }
