@@ -22,12 +22,20 @@ int			str_cmp(char *str1, char *str2);
 int			is_int(char *str, int start, int end);
 int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
 int			is_duplicate(int size, t_node *top, int val);
+int			min_up(t_stack *stack, int *val, int chunck_size);
+int			min_down(t_stack *stack, int *val, int chunck_size);
+int			chunck_sort(t_stack *a, t_stack *b, t_counter *c, int chunck_size);
+int			*indexing(t_stack *mystack);
 long		string_to_int(char *str, int start, int end);
 long		len(char *str);
 double		compute_disorder(int size, t_node *tail);
 char		*remove_spaces(char *str);
 void		selection_sort(t_stack *a, t_stack *b, t_counter *c);
+void		return_stack(t_stack *mystack, int *sorted_nums);
+void		switch_stack_content(t_stack *mystack, int *sorted_arr);
+void		selection(t_stack *a, t_stack *b, t_counter *c);
+void		sort_array(int *arr, int size);
+void		chunck_helper(int num1, int num2, t_stack *a, t_counter *c);
 int			root(t_stack *a, char *algo, int bench_mode);
 int			check_order(t_node *top, int size);
-
 #endif

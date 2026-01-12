@@ -32,7 +32,10 @@ SRCS2 = helper_functions_for_main.c \
        stack2.c \
        swap.c \
        selection.c \
-       root.c
+       chunck.c \
+       root.c \
+       chunck_helper_functions.c \
+       selection_for_chunck.c
 
 OBJS1 := $(SRCS1:.c=.o)
 OBJS2 := $(SRCS2:.c=.o)

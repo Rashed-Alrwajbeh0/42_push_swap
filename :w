@@ -21,7 +21,6 @@ void	free_all(t_stack *a, t_stack *b, t_counter *c)
 
 int	root(t_stack *a, char *algo, int bench_mode)
 {
-	int		num;
 	double		disorder_metric;
 	t_stack		*b;
 	t_counter	*c;
@@ -40,13 +39,11 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	else if (algo && str_cmp(algo, "--complex"))
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	else if (algo && str_cmp(algo, "--medium"))
-		num = chunck_sort(a, b, c, 40);
+		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	else
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
-	if (!num)
-		write(2, "Error\n", 6);
-	ft_printf("Disorder Metric : %f\n", disorder_metric);
+	//ft_printf("Disorder Metric : %f\n", disorder_metric);
 	visualize(a);
-	ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
+	//ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }
