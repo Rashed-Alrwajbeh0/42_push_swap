@@ -48,7 +48,7 @@ int	chunck_sort(t_stack *a, t_stack *b, t_counter *c, int chunck_size)
 	int	val2;
 	int	idx1;
 	int	idx2;
-	int	*array_nums;
+	int*array_nums;
 
 	array_nums = indexing(a);
 	if (!array_nums)
