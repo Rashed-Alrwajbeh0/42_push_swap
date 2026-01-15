@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	min_down(t_stack *stack, int *val, int chunck_size)
+int	min_down(t_stack *stack, int *val, int chunk_size)
 {
 	t_node	*node;
 	int		idx;
@@ -10,7 +10,7 @@ int	min_down(t_stack *stack, int *val, int chunck_size)
 	idx = stack->size;
 	while (idx > 0)
 	{
-		if (node->content < chunck_size)
+		if (node->content < chunk_size)
 		{
 			*val = node->content;
 			return (idx);
@@ -21,7 +21,7 @@ int	min_down(t_stack *stack, int *val, int chunck_size)
 	return (-1);
 }
 
-int	min_up(t_stack *stack, int *val, int chunck_size)
+int	min_up(t_stack *stack, int *val, int chunk_size)
 {
 	t_node	*node;
 	int		idx;
@@ -31,7 +31,7 @@ int	min_up(t_stack *stack, int *val, int chunck_size)
 	idx = 1;
 	while (idx <= stack->size)
 	{
-		if (node->content < chunck_size)
+		if (node->content < chunk_size)
 		{
 			*val = node->content;
 			return (idx);
@@ -41,7 +41,7 @@ int	min_up(t_stack *stack, int *val, int chunck_size)
 	}
 	return (-1);
 }
-
+//bubble sort
 void	sort_array(int *arr, int size)
 {
 	int	i;

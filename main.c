@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/11 11:58:34 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/15 10:55:30 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ int	main(int argc, char *argv[])
 	char	*algo;
 	t_stack	*a;
 
+	if (argc == 1)
+		return (0);
 	bench_mode = 0;
 	i = 1;
 	if (str_cmp(argv[i], "--bench"))

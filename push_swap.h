@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 14:43:57 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/11 11:43:14 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/15 07:36:34 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int			str_cmp(char *str1, char *str2);
 int			is_int(char *str, int start, int end);
 int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
 int			is_duplicate(int size, t_node *top, int val);
-int			min_up(t_stack *stack, int *val, int chunck_size);
-int			min_down(t_stack *stack, int *val, int chunck_size);
-int			chunck_sort(t_stack *a, t_stack *b, t_counter *c, int chunck_size);
+int			min_up(t_stack *stack, int *val, int chunk_size);
+int			min_down(t_stack *stack, int *val, int chunk_size);
+int			chunk_sort(t_stack *a, t_stack *b, t_counter *c, int chunk_size);
 int			*indexing(t_stack *mystack);
 int			radix(t_stack *a, t_stack *b, t_counter *c);
 int			convert_stack_to_binary(t_stack *mystack);
@@ -39,7 +39,7 @@ void		return_stack(t_stack *mystack, int *sorted_nums);
 void		switch_stack_content(t_stack *mystack, int *sorted_arr);
 void		selection(t_stack *a, t_stack *b, t_counter *c);
 void		sort_array(int *arr, int size);
-void		chunck_helper(int num1, int num2, t_stack *a, t_counter *c);
+void		chunk_helper(int num1, int num2, t_stack *a, t_counter *c);
 void		selection_three(t_stack *a, t_counter *c);
 void		help_radix(t_stack *a, t_stack *b, t_counter *c, int idx);
 int			root(t_stack *a, char *algo, int bench_mode);

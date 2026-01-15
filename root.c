@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 12:02:32 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/11 12:28:20 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/15 10:29:39 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	free_all(t_stack *a, t_stack *b, t_counter *c)
 
 int	root(t_stack *a, char *algo, int bench_mode)
 {
-	int		num;
 	double		disorder_metric;
 	t_stack		*b;
 	t_counter	*c;
@@ -37,17 +36,14 @@ int	root(t_stack *a, char *algo, int bench_mode)
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	if (algo && str_cmp(algo, "--simple"))
 		selection_sort(a, b, c);
+	else if (algo && str_cmp(algo, "--medium"))
+		chunk_sort(a, b, c, 120);
 	else if (algo && str_cmp(algo, "--complex"))
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
-	else if (algo && str_cmp(algo, "--medium"))
-		num = chunck_sort(a, b, c, 40);
 	else
-		//selection_sort(a, b, c);
-		num = radix(a, b, c);
-	if (!num)
-		write(2, "Error\n", 6);
-//	ft_printf("Disorder Metric : %f\n", disorder_metric);
-//	visualize(a);
-//	ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
+		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
+	//ft_printf("Disorder Metric : %f\n", disorder_metric);
+	visualize(a);
+	//ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }

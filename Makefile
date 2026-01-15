@@ -6,7 +6,7 @@
 #    By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/28 14:24:57 by klafi             #+#    #+#              #
-#    Updated: 2026/01/10 19:37:23 by klafi            ###   ########.fr        #
+#    Updated: 2026/01/15 07:39:34 by klafi            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 CC = cc
@@ -32,10 +32,10 @@ SRCS2 = helper_functions_for_main.c \
        stack2.c \
        swap.c \
        selection.c \
-       chunck.c \
+       chunk.c \
        root.c \
-       chunck_helper_functions.c \
-       selection_for_chunck.c\
+       chunk_helper_functions.c \
+       selection_for_chunk.c\
        radix.c
 
 OBJS1 := $(SRCS1:.c=.o)
