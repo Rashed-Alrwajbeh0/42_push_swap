@@ -31,6 +31,7 @@ void	push(t_stack *stack, int elem)
 	new_node->above = new_node;
 	new_node->below = new_node;
 	new_node->content = elem;
+	new_node->number_in_binary = NULL;
 	if (stack->top)
 	{
 		new_node->below = stack->top;

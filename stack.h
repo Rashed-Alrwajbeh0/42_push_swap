@@ -20,6 +20,7 @@ typedef struct node
 	struct node	*above;
 	struct node	*below;
 	int			content;
+	char		*number_in_binary;
 }	t_node;
 
 typedef struct list

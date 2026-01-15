@@ -21,6 +21,7 @@ void	free_stack(t_stack *stack)
 	temp = pop(stack);
 	while (temp)
 	{
+		free(temp->number_in_binary);
 		free(temp);
 		temp = pop(stack);
 	}

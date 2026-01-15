@@ -42,11 +42,12 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	else if (algo && str_cmp(algo, "--medium"))
 		num = chunck_sort(a, b, c, 40);
 	else
-		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
+		//selection_sort(a, b, c);
+		num = radix(a, b, c);
 	if (!num)
 		write(2, "Error\n", 6);
-	ft_printf("Disorder Metric : %f\n", disorder_metric);
-	visualize(a);
-	ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
+//	ft_printf("Disorder Metric : %f\n", disorder_metric);
+//	visualize(a);
+//	ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }

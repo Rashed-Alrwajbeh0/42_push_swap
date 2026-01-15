@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	selection_three(t_stack *a, t_counter *c);
-
 int	check_order(t_node *head, int size)
 {
 	int	temp;
@@ -55,34 +52,7 @@ static int	find_min(t_stack *stack)
 	return (ans);
 }
 
-void	selection_sort(t_stack *a, t_stack *b, t_counter *c)
-{
-	int	num;
-	int	moves;
-
-	while (a->size > 3)
-	{
-		num = find_min(a);
-		if (num <= (a->size / 2) + (a->size % 2))
-			while (num-- > 1)
-				ra(a, c);
-		else
-		{
-			moves = a->size - num + 1;
-			while (moves-- > 0)
-				rra(a, c);
-		}
-		if (check_order(a->top, a->size))
-			break ;
-		pb(a, b, c);
-	}
-	if (a->size > 1 && !check_order(a->top, a->size))
-		selection_three(a, c);
-	while (b->size > 0)
-		pa(a, b, c);
-}
-
-static void	selection_three(t_stack *a, t_counter *c)
+void	selection_three(t_stack *a, t_counter *c)
 {
 	int	first;
 	int	second;
@@ -109,4 +79,31 @@ static void	selection_three(t_stack *a, t_counter *c)
 		sa(a, c);
 		rra(a, c);
 	}
+}
+
+void	selection_sort(t_stack *a, t_stack *b, t_counter *c)
+{
+	int	num;
+	int	moves;
+
+	while (a->size > 3)
+	{
+		num = find_min(a);
+		if (num <= (a->size / 2) + (a->size % 2))
+			while (num-- > 1)
+				ra(a, c);
+		else
+		{
+			moves = a->size - num + 1;
+			while (moves-- > 0)
+				rra(a, c);
+		}
+		if (check_order(a->top, a->size))
+			break ;
+		pb(a, b, c);
+	}
+	if (a->size > 1 && !check_order(a->top, a->size))
+		selection_three(a, c);
+	while (b->size > 0)
+		pa(a, b, c);
 }

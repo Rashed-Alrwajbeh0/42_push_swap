@@ -42,18 +42,47 @@ void	chunck_helper(int num1, int num2, t_stack *a, t_counter *c)
 	}
 }
 
+static void	help(t_stack *a, t_stack *b, t_counter *c, int chunck_size)
+{
+	int	val1;
+	int	val2;
+	int	idx1;
+	int	idx2;
+
+	if (a->size == 3 && !b->size)
+		selection_three(a, c);
+	else
+	{
+		while (a->size > 0)
+		{
+			idx1 = min_up(a, &val1, chunck_size);
+			idx2 = min_down(a, &val2, chunck_size);
+			if (idx1 == -1 && idx2 == -1)
+			{
+				chunck_size += 40;
+				continue ;
+			}
+			chunck_helper(idx1 - 1, a->size - idx2 + 1, a, c);
+			pb(a, b, c);
+		}
+		selection(a, b, c);
+	}
+}
+
 int	chunck_sort(t_stack *a, t_stack *b, t_counter *c, int chunck_size)
 {
 	int	val1;
 	int	val2;
 	int	idx1;
 	int	idx2;
-	int*array_nums;
+	int	*array_nums;
 
 	array_nums = indexing(a);
 	if (!array_nums)
 		return (0);
-	while (a->size > 0)
+	if (check_order(a->top, a->size))
+		return (return_stack (a, array_nums), free(array_nums), 1);
+	while (a->size > 3)
 	{
 		idx1 = min_up(a, &val1, chunck_size);
 		idx2 = min_down(a, &val2, chunck_size);
@@ -65,6 +94,6 @@ int	chunck_sort(t_stack *a, t_stack *b, t_counter *c, int chunck_size)
 		chunck_helper(idx1 - 1, a->size - idx2 + 1, a, c);
 		pb(a, b, c);
 	}
-	selection(a, b, c);
+	help(a, b, c, chunck_size);
 	return (return_stack (a, array_nums), free(array_nums), 1);
 }
