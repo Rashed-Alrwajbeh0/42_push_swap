@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 14:43:57 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/15 07:36:34 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/15 11:30:54 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,7 @@ void		selection_three(t_stack *a, t_counter *c);
 void		help_radix(t_stack *a, t_stack *b, t_counter *c, int idx);
 int			root(t_stack *a, char *algo, int bench_mode);
 int			check_order(t_node *top, int size);
+int 		write_int(int n, int fd);
+void    	bench(double disorder_metric, char *algo, t_counter *c);
+
 #endif

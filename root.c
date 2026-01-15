@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 12:02:32 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/15 10:29:39 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/15 12:14:47 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ void	free_all(t_stack *a, t_stack *b, t_counter *c)
 	free(c);
 }
 
+void	adaptive(t_stack *a, t_stack *b, t_counter *c, double disorder_metric)
+{
+	if (disorder_metric < 0.2)
+		selection_sort(a, b, c);
+	else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
+		chunk_sort(a, b, c, 120);
+	else if (disorder_metric >= 0.5)
+		chunk_sort(a, b, c, 120);
+}
+
 int	root(t_stack *a, char *algo, int bench_mode)
 {
 	double		disorder_metric;
@@ -27,23 +37,20 @@ int	root(t_stack *a, char *algo, int bench_mode)
 
 	b = init_stack();
 	c = init_counter();
-	if (!b || !c)
-		return (write(2, "Error\n", 6), free_all(a, b, c), 1);
 	disorder_metric = compute_disorder(a->size, a->top);
-	if (disorder_metric == -1)
+	if (!b || !c || disorder_metric == -1)
 		return (write(2, "Error\n", 6), free_all(a, b, c), 1);
-	if (bench_mode)
-		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
 	if (algo && str_cmp(algo, "--simple"))
 		selection_sort(a, b, c);
 	else if (algo && str_cmp(algo, "--medium"))
 		chunk_sort(a, b, c, 120);
 	else if (algo && str_cmp(algo, "--complex"))
 		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
-	else
-		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
-	//ft_printf("Disorder Metric : %f\n", disorder_metric);
-	visualize(a);
+	else if ((algo && str_cmp(algo, "--adaptive")) || bench_mode)
+		adaptive(a, b, c, disorder_metric);
+	if (bench_mode)
+		bench(disorder_metric, algo, c);
+	//visualize(a);
 	//ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }
