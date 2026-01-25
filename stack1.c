@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 17:29:21 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 10:49:38 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 18:52:49 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,10 @@ t_stack	*init_stack(void)
 	return (stack);
 }
 
-void	push(t_stack *stack, int elem)
+void	push(t_stack *stack, t_node *new_node)
 {
-	t_node	*new_node;
-
-	new_node = malloc(sizeof(t_node));
 	new_node->above = new_node;
 	new_node->below = new_node;
-	new_node->content = elem;
-	new_node->number_in_binary = NULL;
 	if (stack->top)
 	{
 		new_node->below = stack->top;

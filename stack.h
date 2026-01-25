@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 09:43:18 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 13:36:56 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 18:42:07 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct operations
 	int	rrr;
 }	t_counter;
 
-void		push(t_stack *stack, int elem);
+void		push(t_stack *stack, t_node *new_node);
 t_node		*pop(t_stack *stack);
 t_stack		*init_stack(void);
 t_counter	*init_counter(void);

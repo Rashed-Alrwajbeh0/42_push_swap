@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 13:55:07 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/10 11:02:47 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 18:42:28 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b, t_counter *c)
 	if (stack_b->size == 0)
 		return ;
 	node = pop(stack_b);
-	push(stack_a, node->content);
-	free(node);
+	push(stack_a, node);
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b, t_counter *c)
@@ -34,6 +33,5 @@ void	pb(t_stack *stack_a, t_stack *stack_b, t_counter *c)
 	if (stack_a->size == 0)
 		return ;
 	node = pop(stack_a);
-	push(stack_b, node->content);
-	free(node);
+	push(stack_b, node);
 }

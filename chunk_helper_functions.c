@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chunk_helper_functions.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/25 16:47:54 by klafi             #+#    #+#             */
+/*   Updated: 2026/01/25 16:50:14 by klafi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	min_down(t_stack *stack, int *val, int chunk_size)
@@ -41,7 +53,7 @@ int	min_up(t_stack *stack, int *val, int chunk_size)
 	}
 	return (-1);
 }
-//bubble sort
+
 void	sort_array(int *arr, int size)
 {
 	int	i;

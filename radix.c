@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/25 16:49:31 by klafi             #+#    #+#             */
+/*   Updated: 2026/01/25 18:58:36 by klafi            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	max(int num)
@@ -67,10 +79,8 @@ void	help_radix(t_stack *a, t_stack *b, t_counter *c, int idx)
 	int	i;
 
 	i = a->size;
-	ft_printf("idx : %d\n", idx);
-	while (i)
+	while (i > 0)
 	{
-		ft_printf("string : %s\n", a->top->number_in_binary);
 		if (a->top && a->top->number_in_binary[idx] == '0')
 			pb(a, b, c);
 		else
@@ -90,7 +100,6 @@ int	radix(t_stack *a, t_stack *b, t_counter *c)
 	if (!nums)
 		return (0);
 	j = convert_stack_to_binary(a);
-	ft_printf("j : %d\n", j);
 	if (!j)
 		return (0);
 	j--;

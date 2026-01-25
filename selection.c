@@ -6,11 +6,12 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 19:07:11 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 19:36:28 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 16:46:41 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 int	check_order(t_node *head, int size)
 {
 	int	temp;

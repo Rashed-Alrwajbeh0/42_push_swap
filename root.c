@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 12:02:32 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/15 12:14:47 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 19:32:24 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	adaptive(t_stack *a, t_stack *b, t_counter *c, double disorder_metric)
 	else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
 		chunk_sort(a, b, c, 120);
 	else if (disorder_metric >= 0.5)
-		chunk_sort(a, b, c, 120);
+		radix(a, b, c);
 }
 
 int	root(t_stack *a, char *algo, int bench_mode)
@@ -45,12 +45,10 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	else if (algo && str_cmp(algo, "--medium"))
 		chunk_sort(a, b, c, 120);
 	else if (algo && str_cmp(algo, "--complex"))
-		return (ft_printf("Unfinished"), free_all(a, b, c), 1);
+		radix(a, b, c);
 	else if ((algo && str_cmp(algo, "--adaptive")) || bench_mode)
 		adaptive(a, b, c, disorder_metric);
 	if (bench_mode)
 		bench(disorder_metric, algo, c);
-	//visualize(a);
-	//ft_printf("is it ordered ?\n%d\n", check_order(a->top, a->size));
 	return (free_all(a, b, c), 0);
 }

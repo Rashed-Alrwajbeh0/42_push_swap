@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 11:04:08 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/15 12:23:05 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 19:26:08 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	write_disorder(double disorder_metric)
 {
-    double  num;
-    int     int_num;
+	double	num;
+	int		int_num;
 
 	write(2, "[bench] disorder:  ", 18);
 	disorder_metric *= 100;
     num = disorder_metric;
     write_int(num / 1, 2); 
-    num *= 100.0;
+    num *= 10.0;
     int_num = (int) num;
-    int_num %= 100;
+    int_num %= 10;
     write(2, ".", 1); 
-	if (int_num == 0)
-		write(2, "00", 2);
-	else
-    	write_int(int_num, 2);
+    write_int(int_num, 2);
+    num *= 10.0;
+    int_num = (int) num;
+    int_num %= 10;
+    write_int(int_num, 2);
 	write(2, "%", 1);
 	write(2, "\n", 1);
 }
@@ -81,15 +82,7 @@ void	write_ops2(t_counter *c)
 void	bench(double disorder_metric, char *algo, t_counter *c)
 {
 	write_disorder(disorder_metric);
-	write(2, "[bench] strategy:  ", 18);
-	if (!algo)
-		write(2,"Adaptive", 8);
-	else
-	{
-		algo[2] -= 32;
-		write(2, algo + 2, ft_strlen(algo) - 2);
-	}
-	write(2, "\n", 1);
+	write_strategy(algo, disorder_metric);
 	write_total_ops(c);
 	write_ops1(c);
 	write_ops2(c);

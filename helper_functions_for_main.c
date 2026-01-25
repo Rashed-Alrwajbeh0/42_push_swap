@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/11 11:42:49 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 18:57:22 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,17 @@ int	is_int(char *str, int start, int end)
 int	help_with_checker(char *str, int start, int end, t_stack *MyStack)
 {
 	long	temp;
+	t_node	*temp_node;
 
 	temp = string_to_int(str, start, end);
 	if (temp == 2147483648 || is_duplicate(MyStack->size, MyStack->top, temp))
 		return (free_stack(MyStack), free(str), 0);
 	else
-		push(MyStack, temp);
+	{
+		temp_node = malloc(sizeof(t_node));
+		temp_node->content = temp;
+		temp_node->number_in_binary = NULL;
+		push(MyStack, temp_node);
+	}
 	return (1);
 }

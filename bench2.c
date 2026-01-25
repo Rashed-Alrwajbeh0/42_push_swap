@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 11:25:44 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/15 11:34:33 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/25 19:20:48 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,31 @@ static unsigned long	power(unsigned int base, int exp)
 	return (result);
 }
 
-int write_int(int n, int fd)
+void	write_strategy(char *algo, double disorder_metric)
+{
+    write(2, "[bench] strategy:  ", 18);
+    if (!algo)
+		algo = "--adaptive";
+	if (str_cmp(algo, "--simple"))
+		write(2, "Simple / O(n^2)", 15);
+	else if (str_cmp(algo, "--medium"))
+		write(2, "Medium / O(n*sqrt(n))", 21);
+	else if (str_cmp(algo, "--complex"))
+		write(2, "Complex / O(nlog n)", 19);
+	else if (str_cmp(algo, "--adaptive"))
+	{
+		write(2, "Adaptive / ", 11);
+		if (disorder_metric < 0.2)
+			write (2, "O(n^2)", 6);
+		else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
+			write (2, "O(n*sqrt(n))", 12);
+		else if (disorder_metric >= 0.5)
+			write (2, "O(n*log(n))", 11);
+	}
+	write(2, "\n", 1);
+}
+
+int	write_int(int n, int fd)
 {
     char    dig;
     int     len;
