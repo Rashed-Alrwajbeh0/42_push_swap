@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:49:31 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/25 18:58:36 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/27 20:15:09 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	convert_stack_to_binary(t_stack *mystack)
 		j = convert_to_binary(temp->content, k);
 		if (!j)
 			return (-1);
-		temp->number_in_binary = j;
+		temp->bin = j;
 		temp = temp->below;
 		i++;
 	}
@@ -81,8 +81,8 @@ void	help_radix(t_stack *a, t_stack *b, t_counter *c, int idx)
 	i = a->size;
 	while (i > 0)
 	{
-		if (a->top && a->top->number_in_binary[idx] == '0')
-			pb(a, b, c);
+		if (a->top->bin[idx] == '0')
+				pb(a, b, c);
 		else
 			ra(a, c);
 		i--;

@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 20:17:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/11 10:34:19 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/27 19:17:10 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	free_stack(t_stack *stack)
 	temp = pop(stack);
 	while (temp)
 	{
-		free(temp->number_in_binary);
+		free(temp->bin);
 		free(temp);
 		temp = pop(stack);
 	}

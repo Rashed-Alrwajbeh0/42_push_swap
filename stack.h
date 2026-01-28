@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 09:43:18 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/25 18:42:07 by klafi            ###   ########.fr       */
+/*   Updated: 2026/01/27 19:17:22 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ typedef struct node
 	struct node	*above;
 	struct node	*below;
 	int			content;
-	char		*number_in_binary;
+	char		*bin;
 }	t_node;
 
 typedef struct list
