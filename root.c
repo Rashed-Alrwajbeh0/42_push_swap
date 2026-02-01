@@ -24,7 +24,7 @@ void	adaptive(t_stack *a, t_stack *b, t_counter *c, double disorder_metric)
 	if (disorder_metric < 0.2)
 		selection_sort(a, b, c);
 	else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
-		chunk_sort(a, b, c, 1);
+		chunk_sort(a, b, c);
 	else if (disorder_metric >= 0.5)
 		radix(a, b, c);
 }
@@ -43,10 +43,12 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	if (algo && str_cmp(algo, "--simple"))
 		selection_sort(a, b, c);
 	else if (algo && str_cmp(algo, "--medium"))
-		chunk_sort(a, b, c, 1);
+		chunk_sort(a, b, c);
 	else if (algo && str_cmp(algo, "--complex"))
 		radix(a, b, c);
 	else if ((algo && str_cmp(algo, "--adaptive")) || bench_mode)
+		adaptive(a, b, c, disorder_metric);
+	else if (!algo)
 		adaptive(a, b, c, disorder_metric);
 	if (bench_mode)
 		bench(disorder_metric, algo, c);

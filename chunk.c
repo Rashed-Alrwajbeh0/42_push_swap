@@ -34,78 +34,46 @@ int	*indexing(t_stack *mystack)
 	return (nums);
 }
 
-void	chunk_helper(int num1, int num2, t_stack *a, t_counter *c)
+void	shift_to_b(t_stack *a, t_stack *b, t_counter *c, int end)
 {
-	if (num1 <= num2)
-	{
-		while (num1 > 0)
-		{
-			ra(a, c);
-			num1--;
-		}
-	}
-	else
-	{
-		while (num2 > 0)
-		{
-			rra(a, c);
-			num2--;
-		}
-	}
-}
+	int	start;
 
-static void	help(t_stack *a, t_stack *b, t_counter *c, int chunk_size)
-{
-	int	val1;
-	int	val2;
-	int	idx1;
-	int	idx2;
-
-	if (a->size == 3 && !b->size)
-		selection_three(a, c);
-	else
+	start = 0;
+	while (a->size)
 	{
-		while (a->size > 0)
+		if (a->top->content <= start)
 		{
-			idx1 = min_up(a, &val1, chunk_size);
-			idx2 = min_down(a, &val2, chunk_size);
-			if (idx1 == -1 && idx2 == -1)
-			{
-				chunk_size += 40;
-				continue ;
-			}
-			chunk_helper(idx1 - 1, a->size - idx2 + 1, a, c);
 			pb(a, b, c);
+			start++;
+			end++;
 		}
-		selection(a, b, c);
+		else if (a->top->content > start && a->top->content <= end)
+		{
+			pb(a, b, c);
+			rb(b, c);
+			start++;
+			end++;
+		}
+		else
+			ra(a, c);
 	}
 }
 
-int	chunk_sort(t_stack *a, t_stack *b, t_counter *c, int chunk_size)
+int	chunk_sort(t_stack *a, t_stack *b, t_counter *c)
 {
-	int	val1;
-	int	val2;
-	int	idx1;
-	int	idx2;
+	int	size;
 	int	*array_nums;
 
+	if (a->size <= 3)
+		return (selection_three(a, c), 1);
+	if (a->size <= 100)
+		size = 20;
+	else
+		size = 40;
 	array_nums = indexing(a);
 	if (!array_nums)
 		return (0);
-	if (check_order(a->top, a->size))
-		return (return_stack (a, array_nums), free(array_nums), 1);
-	while (a->size > 3)
-	{
-		idx1 = min_up(a, &val1, chunk_size);
-		idx2 = min_down(a, &val2, chunk_size);
-		if (idx1 == -1 && idx2 == -1)
-		{
-			chunk_size += 40;
-			continue ;
-		}
-		chunk_helper(idx1 - 1, a->size - idx2 + 1, a, c);
-		pb(a, b, c);
-	}
-	help(a, b, c, chunk_size);
-	return (return_stack (a, array_nums), free(array_nums), 1);
+	shift_to_b(a, b, c, size);
+	selection(a, b, c);
+	return (return_stack(a, array_nums), free(array_nums), 1);
 }

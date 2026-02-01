@@ -77,18 +77,28 @@ int	convert_stack_to_binary(t_stack *mystack)
 void	help_radix(t_stack *a, t_stack *b, t_counter *c, int idx)
 {
 	int	i;
+	int	k;
+	int	j;
 
 	i = a->size;
 	while (i > 0)
 	{
 		if (a->top->bin[idx] == '0')
-				pb(a, b, c);
+			pb(a, b, c);
 		else
 			ra(a, c);
 		i--;
 	}
-	while (b->size)
-		pa(a, b, c);
+	k = b->size;
+	j = 0;
+	while (k)
+	{
+		if ((idx > 0 && help_radix2(idx - 1, j, b->top) == '1') || idx == 0)
+			pa(a, b, c);
+		else
+			j++;
+		k--;
+	}
 }
 
 int	radix(t_stack *a, t_stack *b, t_counter *c)
@@ -106,7 +116,9 @@ int	radix(t_stack *a, t_stack *b, t_counter *c)
 	while (j != -1)
 	{
 		help_radix(a, b, c, j);
+		if (check_order(a->top, a->size))
+			return (selection(a, b, c), free(nums), 1);
 		j--;
 	}
-	return (free(nums), 1);
+	return (return_stack(a, nums), free(nums), 1);
 }

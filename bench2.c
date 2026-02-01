@@ -14,7 +14,7 @@
 
 static int	count_dig(int n)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	if (n == 0)
@@ -44,8 +44,8 @@ static unsigned long	power(unsigned int base, int exp)
 
 void	write_strategy(char *algo, double disorder_metric)
 {
-    write(2, "[bench] strategy:  ", 18);
-    if (!algo)
+	write(2, "[bench] strategy:  ", 18);
+	if (!algo)
 		algo = "--adaptive";
 	if (str_cmp(algo, "--simple"))
 		write(2, "Simple / O(n^2)", 15);
@@ -57,20 +57,20 @@ void	write_strategy(char *algo, double disorder_metric)
 	{
 		write(2, "Adaptive / ", 11);
 		if (disorder_metric < 0.2)
-			write (2, "O(n^2)", 6);
+			write(2, "O(n^2)", 6);
 		else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
-			write (2, "O(n*sqrt(n))", 12);
+			write(2, "O(n*sqrt(n))", 12);
 		else if (disorder_metric >= 0.5)
-			write (2, "O(n*log(n))", 11);
+			write(2, "O(n*log(n))", 11);
 	}
 	write(2, "\n", 1);
 }
 
 int	write_int(int n, int fd)
 {
-    char    dig;
-    int     len;
-    int     r_len;
+	char	dig;
+	int		len;
+	int		r_len;
 
 	if (n == -2147483648)
 	{
@@ -83,7 +83,7 @@ int	write_int(int n, int fd)
 	{
 		write(fd, "-", 1);
 		n *= -1;
-	len--;
+		len--;
 	}
 	while (len >= 1)
 	{

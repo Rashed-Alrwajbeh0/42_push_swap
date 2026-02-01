@@ -37,8 +37,9 @@ SRCS2 = helper_functions_for_main.c \
        chunk_helper_functions.c \
        selection_for_chunk.c\
        radix.c \
-	   bench.c \
-	   bench2.c
+       bench.c \
+       bench2.c \
+       radix2.c
 
 OBJS1 := $(SRCS1:.c=.o)
 OBJS2 := $(SRCS2:.c=.o)

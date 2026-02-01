@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "printf.h"
+#include "push_swap.h"
 
 int	dig_num_hex(unsigned long dec)
 {

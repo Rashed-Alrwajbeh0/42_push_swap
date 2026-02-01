@@ -37,7 +37,7 @@ int	han_f(va_list list)
 	num = va_arg(list, double);
 	len = put_int(num / 1);
 	num *= 100.0;
-	int_num = (int) num;
+	int_num = (int)num;
 	int_num %= 100;
 	len += write(1, ".", 1);
 	len += put_int(int_num);

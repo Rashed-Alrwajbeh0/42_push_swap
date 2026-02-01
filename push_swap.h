@@ -16,21 +16,21 @@
 # include "printf.h"
 # include "stack.h"
 
+int			root(t_stack *a, char *algo, int bench_mode);
+int			check_order(t_node *top, int size);
+int			write_int(int n, int fd);
 int			add_to_stack(t_stack *s, int val);
 int			checker(t_stack *MyStack, char *s);
 int			str_cmp(char *str1, char *str2);
 int			is_int(char *str, int start, int end);
 int			help_with_checker(char *str, int start, int end, t_stack *MyStack);
 int			is_duplicate(int size, t_node *top, int val);
-int			min_up(t_stack *stack, int *val, int chunk_size);
-int			min_down(t_stack *stack, int *val, int chunk_size);
-int			chunk_sort(t_stack *a, t_stack *b, t_counter *c, int chunk_size);
+int			chunk_sort(t_stack *a, t_stack *b, t_counter *c);
 int			*indexing(t_stack *mystack);
 int			radix(t_stack *a, t_stack *b, t_counter *c);
 int			convert_stack_to_binary(t_stack *mystack);
 int			max(int num);
 int			root(t_stack *a, char *algo, int bench_mode);
-int			check_order(t_node *top, int size);
 int			write_int(int n, int fd);
 long		string_to_int(char *str, int start, int end);
 long		len(char *str);
@@ -45,10 +45,9 @@ void		sort_array(int *arr, int size);
 void		chunk_helper(int num1, int num2, t_stack *a, t_counter *c);
 void		selection_three(t_stack *a, t_counter *c);
 void		help_radix(t_stack *a, t_stack *b, t_counter *c, int idx);
-int			root(t_stack *a, char *algo, int bench_mode);
-int			check_order(t_node *top, int size);
-int			write_int(int n, int fd);
 void		bench(double disorder_metric, char *algo, t_counter *c);
 void		write_strategy(char *algo, double disorder_metric);
+void		shift_to_b(t_stack *a, t_stack *b, t_counter *c, int end);
+char		help_radix2(int idx, int j, t_node *head);
 
 #endif

@@ -14,7 +14,7 @@
 
 static int	count_dig(int n)
 {
-	int		count;
+	int	count;
 
 	count = 0;
 	if (n == 0)

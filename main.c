@@ -147,5 +147,7 @@ int	main(int argc, char *argv[])
 	while (argc-- > i)
 		if (!checker(a, argv[argc]))
 			return (write(2, "Error\n", 6), 1);
-	return (root(a, algo, bench_mode));
+	if (!check_order(a->top, a->size))
+		return (root(a, algo, bench_mode));
+	return (0);
 }

@@ -19,17 +19,17 @@ void	write_disorder(double disorder_metric)
 
 	write(2, "[bench] disorder:  ", 18);
 	disorder_metric *= 100;
-    num = disorder_metric;
-    write_int(num / 1, 2); 
-    num *= 10.0;
-    int_num = (int) num;
-    int_num %= 10;
-    write(2, ".", 1); 
-    write_int(int_num, 2);
-    num *= 10.0;
-    int_num = (int) num;
-    int_num %= 10;
-    write_int(int_num, 2);
+	num = disorder_metric;
+	write_int(num / 1, 2);
+	num *= 10.0;
+	int_num = (int)num;
+	int_num %= 10;
+	write(2, ".", 1);
+	write_int(int_num, 2);
+	num *= 10.0;
+	int_num = (int)num;
+	int_num %= 10;
+	write_int(int_num, 2);
 	write(2, "%", 1);
 	write(2, "\n", 1);
 }
@@ -39,10 +39,10 @@ void	write_total_ops(t_counter *c)
 	int	total_ops;
 
 	write(2, "[bench] total_ops:  ", 19);
-	total_ops = c->sa + c->sb + c->ss + c->pa + c->pb + c->ra + c->rb 
-		+ c->rr + c->rra + c->rrb + c->rrr;
+	total_ops = c->sa + c->sb + c->ss + c->pa + c->pb + c->ra + c->rb + c->rr
+		+ c->rra + c->rrb + c->rrr;
 	write_int(total_ops, 2);
-	write (2, "\n", 1);
+	write(2, "\n", 1);
 }
 
 void	write_ops1(t_counter *c)

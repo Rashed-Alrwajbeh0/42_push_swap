@@ -12,48 +12,6 @@
 
 #include "push_swap.h"
 
-int	min_down(t_stack *stack, int *val, int chunk_size)
-{
-	t_node	*node;
-	int		idx;
-
-	node = stack->bottom;
-	*val = node->content;
-	idx = stack->size;
-	while (idx > 0)
-	{
-		if (node->content < chunk_size)
-		{
-			*val = node->content;
-			return (idx);
-		}
-		node = node->above;
-		idx--;
-	}
-	return (-1);
-}
-
-int	min_up(t_stack *stack, int *val, int chunk_size)
-{
-	t_node	*node;
-	int		idx;
-
-	node = stack->top;
-	*val = node->content;
-	idx = 1;
-	while (idx <= stack->size)
-	{
-		if (node->content < chunk_size)
-		{
-			*val = node->content;
-			return (idx);
-		}
-		node = node->below;
-		idx++;
-	}
-	return (-1);
-}
-
 void	sort_array(int *arr, int size)
 {
 	int	i;
