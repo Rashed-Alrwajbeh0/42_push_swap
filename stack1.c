@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 17:29:21 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/25 18:52:49 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:10:27 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_stack	*init_stack(void)
 	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
 	stack->top = NULL;
 	stack->bottom = NULL;
 	stack->size = 0;
@@ -66,7 +68,7 @@ t_node	*pop(t_stack *stack)
 	stack->size--;
 	return (top_node);
 }
-
+/*
 void	visualize(t_stack *stack)
 {
 	t_node	*node;
@@ -90,12 +92,15 @@ void	visualize(t_stack *stack)
 	}
 	ft_printf("\n");
 }
+*/
 
 t_counter	*init_counter(void)
 {
 	t_counter	*counter;
 
 	counter = malloc(sizeof(t_counter));
+	if (!counter)
+		return (NULL);
 	counter->sa = 0;
 	counter->sb = 0;
 	counter->ss = 0;

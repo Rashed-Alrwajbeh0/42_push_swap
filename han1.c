@@ -6,7 +6,7 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 15:03:01 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 09:54:50 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:21:04 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,6 @@ int	han_s(va_list list)
 	if (!sub)
 		return (6);
 	return (ft_strlen(sub));
-}
-
-int	han_p(va_list list)
-{
-	unsigned long	add;
-	void			*p;
-
-	p = va_arg(list, void *);
-	if (!p)
-	{
-		ft_putstr_fd("(nil)", 1);
-		return (5);
-	}
-	else
-	{
-		add = (unsigned long)p;
-		write(1, "0x", 2);
-		return (put_hex(add) + 2);
-	}
 }
 
 int	han_di(va_list list)

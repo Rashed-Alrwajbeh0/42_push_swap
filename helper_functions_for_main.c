@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:54:27 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/27 19:20:34 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:19:09 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	help_with_checker(char *str, int start, int end, t_stack *MyStack)
 	else
 	{
 		temp_node = malloc(sizeof(t_node));
+		if (!temp_node)
+			return (free_stack(MyStack), free(str), 0);
 		temp_node->content = temp;
 		temp_node->bin = NULL;
 		push(MyStack, temp_node);

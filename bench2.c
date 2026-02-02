@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 11:25:44 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/25 19:20:48 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 12:04:51 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	write_strategy(char *algo, double disorder_metric)
 	if (str_cmp(algo, "--simple"))
 		write(2, "Simple / O(n^2)", 15);
 	else if (str_cmp(algo, "--medium"))
-		write(2, "Medium / O(n*sqrt(n))", 21);
+		write(2, "Medium / O(n√n)", 17);
 	else if (str_cmp(algo, "--complex"))
 		write(2, "Complex / O(nlog n)", 19);
 	else if (str_cmp(algo, "--adaptive"))
@@ -59,7 +59,7 @@ void	write_strategy(char *algo, double disorder_metric)
 		if (disorder_metric < 0.2)
 			write(2, "O(n^2)", 6);
 		else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
-			write(2, "O(n*sqrt(n))", 12);
+			write(2, "O(n√n)", 8);
 		else if (disorder_metric >= 0.5)
 			write(2, "O(n*log(n))", 11);
 	}

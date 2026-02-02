@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 09:50:45 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 13:51:51 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:21:11 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,11 @@
 # include <stdarg.h>
 
 int			dig_num_hex(unsigned long dec);
-int			put_hex(unsigned long dec);
-int			put_hex_cap(unsigned long dec);
 int			han_c(va_list list);
 int			han_s(va_list list);
-int			han_p(va_list list);
 int			han_di(va_list list);
 int			han_u(va_list list);
-int			han_x(va_list list);
 int			han_f(va_list list);
-int			han_xcap(va_list list);
 int			han_mod(void);
 int			ft_printf(const char *s, ...);
 int			put_uint(unsigned int n);

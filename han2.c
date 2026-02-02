@@ -6,21 +6,11 @@
 /*   By: klafi <kanan.lafi@learner.42.tech>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/25 15:11:11 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/10 15:09:39 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:12:48 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-int	han_x(va_list list)
-{
-	return (put_hex(va_arg(list, unsigned int)));
-}
-
-int	han_xcap(va_list list)
-{
-	return (put_hex_cap(va_arg(list, unsigned int)));
-}
 
 int	han_mod(void)
 {

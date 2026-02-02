@@ -6,7 +6,7 @@
 /*   By: ralrawaj <ralrawaj@learner.42.tech>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 19:33:20 by ralrawaj          #+#    #+#             */
-/*   Updated: 2026/01/27 19:37:14 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:05:19 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ int	main(int argc, char *argv[])
 		if (!checker(a, argv[argc]))
 			return (write(2, "Error\n", 6), 1);
 	if (!check_order(a->top, a->size))
-		return (root(a, algo, bench_mode));
+		if (!root(a, algo, bench_mode))
+			return (write(2, "Error\n", 6), 1);
 	return (0);
 }

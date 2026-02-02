@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:49:31 by klafi             #+#    #+#             */
-/*   Updated: 2026/02/02 10:19:58 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:08:52 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ int	radix(t_stack *a, t_stack *b, t_counter *c)
 		return (0);
 	j = convert_stack_to_binary(a);
 	if (!j)
-		return (0);
+		return (free(nums), 0);
 	j--;
 	while (j != -1)
 	{
 		help_radix(a, b, c, j);
 		if (check_order(a->top, a->size))
-			return (selection(a, b, c), free(nums), 1);
+			return (return_stack(a, nums), free(nums), 1);
 		j--;
 	}
 	return (return_stack(a, nums), free(nums), 1);

@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 12:02:32 by klafi             #+#    #+#             */
-/*   Updated: 2026/02/02 10:21:11 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 14:05:43 by ralrawaj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ void	free_all(t_stack *a, t_stack *b, t_counter *c)
 	free(c);
 }
 
-void	adaptive(t_stack *a, t_stack *b, t_counter *c, double disorder_metric)
+int	adaptive(t_stack *a, t_stack *b, t_counter *c, double disorder_metric)
 {
+	int	success;
+
+	success = 1;
 	if (disorder_metric < 0.2)
 		selection_sort(a, b, c);
 	else if (disorder_metric >= 0.2 && disorder_metric < 0.5)
-		chunk_sort(a, b, c);
+		success = chunk_sort(a, b, c);
 	else if (disorder_metric >= 0.5)
-		radix(a, b, c);
+		success = radix(a, b, c);
+	return (success);
 }
 
 int	root(t_stack *a, char *algo, int bench_mode)
@@ -34,7 +38,9 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	double		disorder_metric;
 	t_stack		*b;
 	t_counter	*c;
+	int			success;
 
+	success = 1;
 	b = init_stack();
 	c = init_counter();
 	disorder_metric = compute_disorder(a->size, a->top);
@@ -43,14 +49,14 @@ int	root(t_stack *a, char *algo, int bench_mode)
 	if (algo && str_cmp(algo, "--simple"))
 		selection_sort(a, b, c);
 	else if (algo && str_cmp(algo, "--medium"))
-		chunk_sort(a, b, c);
+		success = chunk_sort(a, b, c);
 	else if (algo && str_cmp(algo, "--complex"))
-		radix(a, b, c);
+		success = radix(a, b, c);
 	else if ((algo && str_cmp(algo, "--adaptive")) || bench_mode)
-		adaptive(a, b, c, disorder_metric);
+		success = adaptive(a, b, c, disorder_metric);
 	else if (!algo)
-		adaptive(a, b, c, disorder_metric);
+		success = adaptive(a, b, c, disorder_metric);
 	if (bench_mode)
 		bench(disorder_metric, algo, c);
-	return (free_all(a, b, c), 0);
+	return (free_all(a, b, c), success);
 }
