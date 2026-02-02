@@ -6,7 +6,7 @@
 /*   By: klafi <klafi@learner.42.tech>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:49:31 by klafi             #+#    #+#             */
-/*   Updated: 2026/01/27 20:15:09 by klafi            ###   ########.fr       */
+/*   Updated: 2026/02/02 10:19:58 by klafi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	help_radix(t_stack *a, t_stack *b, t_counter *c, int idx)
 {
 	int	i;
 	int	k;
-	int	j;
 
 	i = a->size;
 	while (i > 0)
@@ -90,13 +89,9 @@ void	help_radix(t_stack *a, t_stack *b, t_counter *c, int idx)
 		i--;
 	}
 	k = b->size;
-	j = 0;
 	while (k)
 	{
-		if ((idx > 0 && help_radix2(idx - 1, j, b->top) == '1') || idx == 0)
-			pa(a, b, c);
-		else
-			j++;
+		pa(a, b, c);
 		k--;
 	}
 }
